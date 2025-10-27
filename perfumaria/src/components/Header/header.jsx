@@ -1,10 +1,17 @@
+{/* Classe de Criação do Componente Header */} 
+
 import React from 'react';
+
+{/* Import da Biblioteca de Rotas */}
 import { Link } from 'react-router-dom'; 
 
+{/* Import do CSS do Componente */}
 import styles from './header.module.css';
 
+{/* Função de Criação do Header */}
 const Header = ({ isLoggedIn, activeScreen, onLogout }) => {
 
+    {/* Array com os Links Presentes na Navbar */}
     const navItems = [
         { name: 'Home', path: '/' },
         { name: 'Vendas', path: '/vendas' },
@@ -14,8 +21,8 @@ const Header = ({ isLoggedIn, activeScreen, onLogout }) => {
     ];
     
     return (
-        <header className={styles.headerContainer}>
-            <h1 className={styles.headerTitle}>T-Scent</h1>
+        <header className={styles.headerContainer}> {/* Começo do Header */}
+            <h1 className={styles.headerTitle}>T-Scent</h1> {/* Título da Navbar */}
 
             {isLoggedIn ? (
                 <nav className={styles.headerNav}>
@@ -39,7 +46,8 @@ const Header = ({ isLoggedIn, activeScreen, onLogout }) => {
             ) : (
                 <div /> 
             )}
-        </header>
+            {/* Fim do Header */}
+        </header> 
     );
 };
 
