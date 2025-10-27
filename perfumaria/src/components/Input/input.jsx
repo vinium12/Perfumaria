@@ -1,7 +1,14 @@
+{/* Classe de Criação do Componente Input */} 
+
 import React, { useState } from 'react';
+
+{/* Import da Biblioteca Interna de Icones */} 
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'; 
+
+{/* Import do CSS do Componente */}
 import styles from './Input.module.css';
 
+{/* Função de Controle da Exibição do Icone dos Olhos no Input */}
 const EyeIcon = ({ onClick, isVisible }) => (
     <span 
         className={styles.passwordToggle} 
@@ -11,7 +18,9 @@ const EyeIcon = ({ onClick, isVisible }) => (
         {isVisible ? <MdVisibility /> : <MdVisibilityOff />}
     </span>
 );
+{/* Fim da Função de Exibição dos Olhos no Input */}
 
+{/* Função de Criação do Header */}
 const Input = ({
     label,
     type = 'text',

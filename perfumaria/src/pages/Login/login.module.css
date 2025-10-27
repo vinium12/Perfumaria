@@ -1,28 +1,25 @@
-/* login.module.css */
+{/* CSS Base da Página de Login */}
 
+{/* Estilização do Background */}
 .loginBackground {
-  background: linear-gradient(
-    180deg, 
-    #483D8B 0%, 
-    #6A5ACD 50%, 
-    #8A2BE2 100%
-  );
-
+  background: var(--BackGrad);
   height: 100vh;
   display: flex;
   margin: 0;
   padding: 0;
 }
 
+{/* Título Dentro do Card */}
 h2 {
-    font-size: 30px;
+  font: var(--Titulos);
 }
 
+{/* Estilização do Card da Página */}
 .loginCard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: var(--BrancoMain);
     padding: 25px;
     height: 435px;
     position: absolute;
