@@ -1,0 +1,92 @@
+.wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  background-color: #9b8cff;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 15px;
+}
+
+.headerCell {
+  text-align: left;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-bottom: 1px solid #eee;
+  padding: 10px 15px;
+  align-items: center;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.cell {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.editBtn:hover,
+.deleteBtn:hover {
+  transform: scale(1.15);
+}
+
+.editBtn svg {
+  color: #6a5acd;
+}
+
+.deleteBtn svg {
+  color: #d20000;
+}
+
+.noData {
+  padding: 15px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+.bottomButton {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.bottomButton button {
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.bottomButton button:hover {
+  background-color: #5846b0;
+}

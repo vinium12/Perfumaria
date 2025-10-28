@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import Header from './components/Header/header'
 import Login from './pages/Login/login'; 
 import Dashboard from './pages/Home/home';
+import Clientes from './pages/Clients/clients';
+import Cars from './pages/Cars/cars';
 import './App.css'
 
 function AppRouter({ isLoggedIn, onLogin, onLogout }) {
@@ -36,6 +38,26 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
                         element={
                             <ProtectedRoute isLoggedIn={isLoggedIn} onLogout={onLogout}>
                                 <Dashboard />
+                            </ProtectedRoute>
+                        } 
+                    />
+
+                    <Route 
+                        path="/clientes" 
+                        element={
+                            <ProtectedRoute isLoggedIn={isLoggedIn} onLogout={onLogout}>
+                                {/* O componente Clientes que você criou */}
+                                <Clientes /> 
+                            </ProtectedRoute>
+                        } 
+                    />
+
+                     <Route 
+                        path="/frota" 
+                        element={
+                            <ProtectedRoute isLoggedIn={isLoggedIn} onLogout={onLogout}>
+                                {/* O componente Clientes que você criou */}
+                                <Cars /> 
                             </ProtectedRoute>
                         } 
                     />
