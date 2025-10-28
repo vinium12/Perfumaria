@@ -15,6 +15,7 @@ import Clientes from "./pages/Clients/clients";
 import Cars from "./pages/Cars/cars";
 import EditarPerfil from "./pages/EditPerfil/editPerfil";
 import EditarProduto from "./pages/EditProduct/editproduct";
+import CadastrarProduto from "./pages/CadastrarProduct/cadastrarProduct";
 import "./App.css";
 
 // ---------------------- COMPONENTE AUXILIAR ----------------------
@@ -36,7 +37,8 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
   const mainPadding =
     location.pathname === "/login" ||
     location.pathname === "/editar" ||
-    location.pathname === "/editarproduto"
+    location.pathname === "/editarproduto" ||
+    location.pathname === "/cadastrarproduto"
       ? "0"
       : "20px 100px";
 
@@ -88,6 +90,14 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <EditarProduto />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cadastrarproduto"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <CadastrarProduto />
               </ProtectedRoute>
             }
           />
