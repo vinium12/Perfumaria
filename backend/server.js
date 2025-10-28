@@ -7,9 +7,12 @@ import vendedoresRoutes from "./src/routes/vendedorRoutes.js";
 
 // 1. O app que contém as rotas e middlewares (criado no app.js)
 import app from "./src/app.js";
+import veiculosRoutes from "./src/routes/veiculosRoutes.js";
+
+
 
 dotenv.config();
-
+app.use("/veiculos", veiculosRoutes);
 // Define a porta, usando a variável de ambiente ou 3000 como padrão
 const PORT = process.env.PORT || 3000;
 
