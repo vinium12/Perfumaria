@@ -8,9 +8,16 @@ export const login = async (req, res) => {
     const { email, senha } = req.body; // Recebe email e senha do front-end
 
     try {
-        // 1. Busca o usuário pelo email
+        // ✅ 1. CONSULTA CORRIGIDA: Usa JOIN para buscar Nome_Regiao e inclui Telefone e Endereco
         const [rows] = await pool.query(
-            "SELECT ID_Vendedor, Nome, Email, Senha, ID_Regiao FROM vendedor WHERE Email = ?",
+            `
+            SELECT 
+                v.ID_Vendedor, v.Nome, v.Email, v.Senha, v.Telefone, v.Endereco, 
+                v.ID_Regiao, r.Nome_Regiao 
+            FROM vendedor v
+            INNER JOIN regiao r ON v.ID_Regiao = r.ID_Regiao
+            WHERE v.Email = ?
+            `,
             [email]
         );
 
@@ -26,14 +33,17 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: "Credenciais inválidas." });
         }
 
-        // 3. Sucesso: Retorna os dados do usuário (sem a senha)
+        // ✅ 3. RETORNO CORRIGIDO: Envia todos os dados necessários para o frontend
         res.json({
             message: "Login bem-sucedido",
             vendedor: {
                 id: vendedor.ID_Vendedor,
                 nome: vendedor.Nome,
                 email: vendedor.Email,
-                regiao: vendedor.ID_Regiao,
+                regiaoId: vendedor.ID_Regiao,      // ID para filtros
+                regiaoNome: vendedor.Nome_Regiao,  // NOVO: Nome da Região
+                telefone: vendedor.Telefone,       // NOVO
+                endereco: vendedor.Endereco,       // NOVO
             },
         });
     } catch (err) {
@@ -47,13 +57,12 @@ export const login = async (req, res) => {
 // LÓGICA DE LISTAGEM DE VENDEDORES (Corrigida e Exportada)
 // ----------------------------------------------------
 export const listarVendedores = async (req, res) => {
-  try {
-    // Usando a função do Model, conforme o seu código
-    // Se getVendedores não estiver definido em vendedorModel.js, esta linha pode falhar depois.
-    const vendedores = await getVendedores(); 
-    res.json(vendedores);
-  } catch (err) {
-    console.error("Erro ao buscar vendedores:", err);
-    res.status(500).json({ message: "Erro ao buscar vendedores" });
-  }
+    try {
+        // Usando a função do Model (mantido)
+        const vendedores = await getVendedores(); 
+        res.json(vendedores);
+    } catch (err) {
+        console.error("Erro ao buscar vendedores:", err);
+        res.status(500).json({ message: "Erro ao buscar vendedores" });
+    }
 };
