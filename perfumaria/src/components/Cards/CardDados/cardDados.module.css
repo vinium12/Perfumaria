@@ -1,0 +1,71 @@
+{/* CSS do Componente CardDados */}
+
+{/* Inicio da Classe do Formato do Card */}
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.4rem;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+{/* Fim da Classe do Formato do Card */}
+
+{/* Inicio da Classe do Titulo */}
+.titulo {
+    font: var(--Titulos);
+    color: var(--PretoTexto);
+    margin-bottom: 0.5rem;
+}
+{/* Fim da Classe do Titulo */}
+
+{/* Inicio da Classe de Divisória do Card */}
+.sessao {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+{/* Fim da Classe de Divisória do Card */}
+
+{/* Inicio da Classe do Subtitulo */}
+.subtitulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.2rem;
+}
+{/* Fim da Classe do Subtitulo */}
+
+{/* Inicio da Classe dos Pontos Estratégicos */}
+.lista, .pontos {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.lista li, .pontos li {
+    font-size: 0.95rem;
+    color: #444;
+    margin: 0.2rem 0;
+}
+
+.lista li strong {
+    color: #000;
+}
+
+.pontos li::before {
+    content: "• ";
+    color: var(--RoxoMain);
+    font-weight: bold;
+}
+{/* Fim da Classe dos Pontos Estratégicos */}
