@@ -1,12 +1,10 @@
 // src/controllers/produtoController.js
 
-import { getAllProdutos } from '../models/produtoModel.js'; // Apenas getAllProdutos
+import { getAllProdutos } from '../models/produtoModel.js'; 
 
 export const listarProdutos = async (req, res) => {
-    // ❌ Ignoramos o req.query.regiao
-    
+    // A função é simples, pois o Model já está tratando tudo
     try {
-        // ✅ Chama a função que busca todos
         const produtos = await getAllProdutos(); 
         res.json(produtos);
     } catch (error) {
