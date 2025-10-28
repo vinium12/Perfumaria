@@ -30,6 +30,7 @@ const Login = ({ onLogin}) => {
       });
 
       const data = await res.json();
+      console.log("🔍 Backend respondeu:", data);
 
       if (!res.ok) {
         setErro(data.message || 'Erro no login');
