@@ -1,12 +1,43 @@
+{/* Arquivo CSS Padrão do Site */}
+
+{/* Import da Fonte Para Títulos */}
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap');
+
+{/* Import da Fonte Para Subtítulos */}
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+{/* Import da Fonte Para Textos */}
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+{/* Váriaveis Gerais de Estilo */}
+:root {
+  {/* Padronização dos Textos */}
+  --Titulos: 600 40px/1.5 "Montagu Slab", serif;  {/* Nome Principal nos Cards */}
+  --Subtitulos: 600 20px/1.5 "Montserrat Alternates", sans-serif;  {/* Nome dos Atributos */}
+  --Textos: 400 25px/1.5 "Montserrat", sans-serif;  {/* Textos Maiores, Como os Dentro dos Cards */}
+  --TextosDados: 400 18px/1.5 "Montserrat", sans-serif;  {/* Informações ao Lado dos Subtítulos, Depois do " : " */}
+
+  {/* Padronização das Cores */}
+  --RoxoMain: #6A5ACD;  {/* Roxo Mais Comum */}
+  --RoxoSec: #9F91F9;  {/* Roxo das Tabelas */}
+  --RoxoHover: #5846b0;  {/* Efeito do Hover nos Principais Elementos */}
+  --BrancoMain: #FFFFFF;  {/* Branco dos Cards e Tela */}
+  --VermelhoBtn: #D20000;  {/* Vermelho dos Botões de Ação */}
+  --VermelhoHover: #b80000;  {/* Efeito de Hover nos Botões de Ação */}
+  --CinzaTexto: #949494;  {/* Cinza dos Textos Longos  */}
+  --PretoTexto: #000000;  {/* Preto de Títulos e Subtítulos */}
+  --PretoIcons: #1F1B1B;  {/* Preto dos Ícones dos Cards */}
+  --BackGrad: linear-gradient(180deg, #8A2BE2 0%, #6A5ACD 50%, #483D8B 100%);  {/* Degradê de Fundo do Site */}
+}
+
+ {/* Começo do CSS Reset */}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  overflow: hidden; 
-  height: 100%;
-  width: 100%; 
+a {
+  text-decoration: none;
 }

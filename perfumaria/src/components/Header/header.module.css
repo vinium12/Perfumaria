@@ -1,41 +1,41 @@
-:root {
-  --primary-bg: #6A5ACD;
-  --primary-bg-hover: #5846b0;
-  --logout-btn-bg: #D20000;
-  --logout-btn-hover: #b80000;
-  --white: #ffffff;
-}
+{/* CSS do Componente Header */}
 
+{/* Inicio da Classe Principal do Header */}
 .headerContainer {
-  background-color: var(--primary-bg);
-  color: var(--white);
+  background-color: var(--RoxoMain);
+  color: var(--BrancoMain);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--Textos);
   flex-wrap: wrap;
 }
+{/* Fim da Classe Principal do Header */}
 
+{/* Inicio da Classe com o Título do Projeto */}
 .headerTitle {
   font-size: 1.6rem;
   font-weight: 500;
   margin: 0;
 }
+{/* Fim da Classe com o Título do Projeto */}
 
+{/* Inicio da Classe da Propriedade Nav */}
 .headerNav {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
 }
+{/* Fim da Classe da Propriedade Nav */}
 
+{/* Inicio da Classe com os Links da Navbar */}
 .navItem {
-  color: var(--white);
+  color: var(--BrancoMain);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font: var(--TextosDados);
   padding: 6px 8px;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease-in-out;
@@ -46,13 +46,15 @@
 }
 
 .active {
-  border-bottom: 2px solid var(--white);
+  border-bottom: 2px solid var(--BrancoMain);
   font-weight: 700;
 }
+{/* Fim da Classe com os Links da Navbar */}
 
+{/* Inicio da Classe do Botão Sair */}
 .logoutButton {
-  background-color: var(--logout-btn-bg);
-  color: var(--white);
+  background-color: var(--VermelhoHover);
+  color: var(--BrancoMain);
   border: none;
   border-radius: 6px;
   padding: 8px 25px;
@@ -62,10 +64,12 @@
 }
 
 .logoutButton:hover {
-  background-color: var(--logout-btn-hover);
+  background-color: var(--VermelhoHover);
   transform: scale(1.05);
 }
+{/* Fim da Classe do Botão Sair */}
 
+{/* Inicio da Responsividade do Header */}
 @media (max-width: 768px) {
   .headerContainer {
     flex-direction: column;
@@ -89,3 +93,4 @@
     padding: 8px 20px;
   }
 }
+{/* Fim da Responsividade do Header */}
