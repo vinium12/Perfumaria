@@ -6,11 +6,17 @@ import { IoPersonSharp } from "react-icons/io5";  {/* Icone do Card de Clientes 
 import { BsCashCoin } from "react-icons/bs";  {/* Icone do Card de Vendas */} 
 import { FaCar } from "react-icons/fa6";  {/* Icone do Card de Frota */} 
 
-import CardAcesso from './../../components/Cards/CardAcesso/cardAcesso';  {/* Import do Componente do Card */} 
+{/* Import dos Componentes de Cards */} 
+import CardAcesso from './../../components/Cards/CardAcesso/cardAcesso';  {/* Cards de Acesso dos CRUDs */} 
+import CardDados from '../../components/Cards/CardDados/cardDados';  {/* Card com as Informações Fixas da Região */} 
+import CardPerfil from '../../components/Cards/CardPerfil/cardPerfil'; {/* Card com as Informações Base */} 
 
 const Dashboard = () => {
+     const handleEdit = () => alert("Editando..."); // OnClick Temporário Para Teste
     return (
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+
+          {/* Inicio da Chamada dos Cards de Acesso */} 
       <CardAcesso
         titulo="Produtos"
         descricao="Acesse sua lista de produtos"
@@ -38,6 +44,28 @@ const Dashboard = () => {
         icon={FaCar}
         onClick={() => console.log("Frota")} // OnClick Temporário Para Teste
       />
+         {/* Fim da Chamada dos Cards de Acesso */} 
+        
+         {/* Chamada do Card de Dados */} 
+    <CardDados 
+      titulo="Região"
+      regiao="Leste"
+      qtnVen="350"
+      qtnCli="1100"
+      veiculo="Leste"
+      pontosE="Av.São Miguel, 3995"
+    />
+
+         {/* Chamada do Card de Perfil */}
+    <CardPerfil
+      email="fulano@vendas.com"
+      ender="Rua das Folhas, São Paulo"
+      tel="11 4002-8922"
+      regiao="Leste"
+      onEdit={handleEdit}
+    
+    />
+
     </div>
   );
 }
