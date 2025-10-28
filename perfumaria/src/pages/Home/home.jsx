@@ -1,73 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-{/* Imports dos Icones Usando o React-Icons, Separados Assim por Serem de Pacotes Diferentes */} 
-import { HiShoppingBag } from "react-icons/hi2";  {/* Icone do Card de Produtos */} 
-import { IoPersonSharp } from "react-icons/io5";  {/* Icone do Card de Clientes */} 
-import { BsCashCoin } from "react-icons/bs";  {/* Icone do Card de Vendas */} 
-import { FaCar } from "react-icons/fa6";  {/* Icone do Card de Frota */} 
+{/* Imports dos Icones Usando o React-Icons */} 
+import { HiShoppingBag } from "react-icons/hi2"; 
+import { IoPersonSharp } from "react-icons/io5"; 
+import { BsCashCoin } from "react-icons/bs"; 
+import { FaCar } from "react-icons/fa6"; 
 
 {/* Import dos Componentes de Cards */} 
-import CardAcesso from './../../components/Cards/CardAcesso/cardAcesso';  {/* Cards de Acesso dos CRUDs */} 
-import CardDados from '../../components/Cards/CardDados/cardDados';  {/* Card com as Informações Fixas da Região */} 
-import CardPerfil from '../../components/Cards/CardPerfil/cardPerfil'; {/* Card com as Informações Base */} 
+import CardAcesso from './../../components/Cards/CardAcesso/cardAcesso'; 
+import CardDados from '../../components/Cards/CardDados/cardDados'; 
+import CardPerfil from '../../components/Cards/CardPerfil/cardPerfil'; 
+
+// Importe estilos se necessário
+// import styles from './home.module.css'; 
+
 
 const Dashboard = () => {
-     const handleEdit = () => alert("Editando..."); // OnClick Temporário Para Teste
+    const navigate = useNavigate(); 
+    
+    // 1. ESTADOS: Para armazenar os dados do vendedor e o estado de carregamento
+    const [perfil, setPerfil] = useState({
+        nome: 'Carregando...',
+        email: '...',
+        ender: '...',
+        tel: '...',
+        regiao: '...' // Será o nome da região
+    });
+    const [loading, setLoading] = useState(true);
+
+    // 2. LÓGICA DE CARREGAMENTO: Busca os dados do vendedor no localStorage
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        
+        if (storedUser) {
+            try {
+                const userData = JSON.parse(storedUser);
+                
+                // ✅ MAPEAMENTO CORRIGIDO: Usa as novas chaves do backend
+                setPerfil({
+                    nome: userData.nome || 'Vendedor',
+                    email: userData.email || 'Não informado',
+                    ender: userData.endereco || 'Não informado',   // 👈 Chave 'endereco'
+                    tel: userData.telefone || 'Não informado',     // 👈 Chave 'telefone'
+                    regiao: userData.regiaoNome || 'N/A'          // 👈 Chave 'regiaoNome'
+                });
+                
+            } catch (e) {
+                console.error("Erro ao ler JSON do localStorage:", e);
+            }
+        }
+        
+        setLoading(false); // Finaliza o loading
+        
+    }, [navigate]); 
+
+    // Handler de Navegação (Usaremos para os CardAcesso e CardPerfil)
+    const handleNavigate = (path) => {
+        navigate(path);
+    };
+    
+    const handleEditPerfil = () => {
+        // Usa a rota /editar que você configurou no App.jsx
+        handleNavigate('/editar'); 
+    };
+    
+    if (loading) {
+        return <div style={{ textAlign: 'center', padding: '50px' }}>Carregando dados do perfil...</div>;
+    }
+
+    // Dados para os Cards (Puxados do estado do perfil)
+    const dadosPerfil = {
+        email: perfil.email,
+        ender: perfil.ender,
+        tel: perfil.tel,
+        regiao: perfil.regiao,
+        nome: perfil.nome // Adiciona o nome para o CardDados
+    };
+
     return (
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
 
-          {/* Inicio da Chamada dos Cards de Acesso */} 
-      <CardAcesso
-        titulo="Produtos"
-        descricao="Acesse sua lista de produtos"
-        icon={HiShoppingBag}
-        onClick={() => console.log("Produtos")} // OnClick Temporário Para Teste
-      />
+            {/* Cards de ACESSO (Navegação real) */} 
+            <CardAcesso titulo="Produtos" descricao="Acesse sua lista de produtos" icon={HiShoppingBag} onClick={() => handleNavigate('/produtos')} />
+            <CardAcesso titulo="Clientes" descricao="Visualize os clientes da sua região" icon={IoPersonSharp} onClick={() => handleNavigate('/clientes')} />
+            <CardAcesso titulo="Vendas" descricao="Tenha acesso as suas vendas" icon={BsCashCoin} onClick={() => handleNavigate('/vendas')} />
+            <CardAcesso titulo="Frota" descricao="Visualize a frota de veículos da sua região" icon={FaCar} onClick={() => handleNavigate('/frota')} />
+            
+            {/* Card de DADOS (Usando dados reais do perfil) */} 
+            <CardDados 
+                titulo={`Região: ${dadosPerfil.regiao}`}
+                regiao={dadosPerfil.regiao} // Nome da Região
+                qtnVen="350" // Fictício
+                qtnCli="1100" // Fictício
+                veiculo="Leste" // Fictício
+                pontosE={["Av.São Miguel, 3995"]} // Fictício (verifique CardDados.jsx se for um erro de prop)
+            />
 
-      <CardAcesso
-        titulo="Clientes"
-        descricao="Visualize os clientes da sua região"
-        icon={IoPersonSharp}
-        onClick={() => console.log("Clientes")} // OnClick Temporário Para Teste
-      />
+            {/* Card de PERFIL (Usando dados dinâmicos do estado) */}
+            <CardPerfil
+                email={dadosPerfil.email}
+                ender={dadosPerfil.ender}
+                tel={dadosPerfil.tel}
+                regiao={dadosPerfil.regiao} // Nome da Região
+                onEdit={handleEditPerfil}
+            />
 
-      <CardAcesso
-        titulo="Vendas"
-        descricao="Tenha acesso as suas vendas"
-        icon={BsCashCoin}
-        onClick={() => console.log("Vendas")} // OnClick Temporário Para Teste
-      />
-
-      <CardAcesso
-        titulo="Frota"
-        descricao="Visualize a frota de veículos da sua região"
-        icon={FaCar}
-        onClick={() => console.log("Frota")} // OnClick Temporário Para Teste
-      />
-         {/* Fim da Chamada dos Cards de Acesso */} 
-        
-         {/* Chamada do Card de Dados */} 
-    <CardDados 
-      titulo="Região"
-      regiao="Leste"
-      qtnVen="350"
-      qtnCli="1100"
-      veiculo="Leste"
-      pontosE="Av.São Miguel, 3995"
-    />
-
-         {/* Chamada do Card de Perfil */}
-    <CardPerfil
-      email="fulano@vendas.com"
-      ender="Rua das Folhas, São Paulo"
-      tel="11 4002-8922"
-      regiao="Leste"
-      onEdit={handleEdit}
-    
-    />
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default Dashboard;
