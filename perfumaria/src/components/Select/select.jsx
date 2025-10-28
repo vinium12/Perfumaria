@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Input/Input.module.css"; // reaproveita o mesmo CSS
+import styles from "./select.module.css"; // reaproveita o mesmo CSS
 
 const Select = ({
   label,
@@ -10,6 +10,8 @@ const Select = ({
   options = [], // pode ser [{label, value}] ou ["Opção 1", "Opção 2"]
   ...rest
 }) => {
+
+  
   // normaliza opções se vierem como string[]
   const normalized = options.map((opt) =>
     typeof opt === "string" ? { label: opt, value: opt } : opt
