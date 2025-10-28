@@ -25,9 +25,9 @@ const CardDados = ({
       <div className={styles.sessao}>
         <h4 className={styles.subtitulo}>Pontos estratégicos:</h4>
         <ul className={styles.pontos}>
-          {pontosE.map((ponto, index) => (
+          {/* {pontosE.map((ponto, index) => (
             <li key={index}>{ponto}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </div>

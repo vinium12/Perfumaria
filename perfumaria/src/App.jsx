@@ -16,6 +16,7 @@ import Cars from "./pages/Cars/cars";
 import EditarPerfil from "./pages/EditPerfil/editPerfil";
 import EditarProduto from "./pages/EditProduct/editproduct";
 import CadastrarProduto from "./pages/CadastrarProduct/cadastrarProduct";
+import Produtos from "./pages/Produtos/produtos";
 import "./App.css";
 
 // ---------------------- COMPONENTE AUXILIAR ----------------------
@@ -53,6 +54,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
       <main style={{ padding: mainPadding }}>
         <Routes>
           <Route path="/login" element={<Login onLogin={onLogin} />} />
+
           <Route
             path="/"
             element={
@@ -61,6 +63,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/clientes"
             element={
@@ -69,6 +72,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/frota"
             element={
@@ -77,6 +81,16 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/produtos"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Produtos />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/editar"
             element={
@@ -85,6 +99,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/editarproduto"
             element={
@@ -93,6 +108,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/cadastrarproduto"
             element={
@@ -101,6 +117,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
               </ProtectedRoute>
             }
           />
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

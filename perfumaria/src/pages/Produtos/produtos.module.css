@@ -1,0 +1,17 @@
+/* src/pages/Produtos/produtos.module.css */
+
+.produtosContainer{ /* 👈 ATUALIZADO */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.pageTitle{
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.tableWrapper{
+    width: 100%;
+}
