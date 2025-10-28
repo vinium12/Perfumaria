@@ -5,6 +5,8 @@ import cors from "cors";
 import vendedorRoutes from "./routes/vendedorRoutes.js";
 import authRoutes from "./routes/authRoutes.js"; // 👈 NÃO ESQUEÇA DE IMPORTAR AS ROTAS DE AUTH
 import clienteRoutes from "./routes/clienteRoutes.js";
+import produtoRoutes from "./routes/produtoRoutes.js";
+
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use("/vendedores", vendedorRoutes);
 // Rota de Autenticação (CRUCIAL para o seu login POST /auth/login)
 app.use("/auth", authRoutes); 
 app.use("/clientes", clienteRoutes); // Isso define o prefixo /clientes
+app.use("/produtos", produtoRoutes); // Isso define o prefixo /produtos
 
 // 👈 Exporta o objeto 'app' para que server.js possa usá-lo
 export default app;

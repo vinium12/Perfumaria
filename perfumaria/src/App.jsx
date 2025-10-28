@@ -9,6 +9,7 @@ import Cars from './pages/Cars/cars';
 import EditarPerfil from './pages/EditPerfil/editPerfil';
 import EditarProduto from './pages/EditProduct/editproduct'; 
 import CadastrarProduto from './pages/CadastrarProduct/cadastrarProduct';
+import Produtos from './pages/Produtos/produtos';
 import './App.css';
 // ---------------------- COMPONENTE AUXILIAR ----------------------
 function AppRouter({ isLoggedIn, onLogin, onLogout }) {
@@ -79,6 +80,16 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
                             </ProtectedRoute>
                         } 
                     />
+
+                     <Route 
+                        path="/produtos" 
+                        element={
+                            <ProtectedRoute isLoggedIn={isLoggedIn}>
+                                <Produtos /> 
+                            </ProtectedRoute>
+                        } 
+                    />
+                    
                     
                     <Route 
                         path="/editar" 
