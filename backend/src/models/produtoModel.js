@@ -2,18 +2,18 @@
 
 import pool from "../config/db.js";
 
-// ✅ FUNÇÃO CORRIGIDA: Buscar TODOS os produtos (sem filtro de WHERE)
+// ✅ FUNÇÃO CORRIGIDA: Buscar TODOS os produtos (apenas as colunas existentes)
 export const getAllProdutos = async () => {
     try {
         const [rows] = await pool.query(`
             SELECT 
-                p.ID_Produto,
-                p.Nome,
-                p.Marca,
-                p.Preco,
-                p.Qtd_Estoque AS Estoque, 
-            FROM produto p
-            ORDER BY p.Nome
+                ID_Produto,
+                Nome,
+                Preco,
+                Qtd_Estoque AS Estoque, 
+                Marca
+            FROM produto
+            ORDER BY Nome
         `);
         return rows;
     } catch (error) {
@@ -21,5 +21,3 @@ export const getAllProdutos = async () => {
         throw new Error("Falha ao buscar produtos no banco de dados.");
     }
 };
-
-// ❌ REMOVIDA: A função getProdutosByRegiao (não é mais necessária)
