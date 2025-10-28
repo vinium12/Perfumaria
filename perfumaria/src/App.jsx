@@ -52,7 +52,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
                         } 
                     />
 
-                     <Route 
+                    <Route 
                         path="/frota" 
                         element={
                             <ProtectedRoute isLoggedIn={isLoggedIn} onLogout={onLogout}>
@@ -81,7 +81,6 @@ const ProtectedRoute = ({ children, isLoggedIn, onLogout }) => {
         </>
     );
 };
-
 
 function App() {
 

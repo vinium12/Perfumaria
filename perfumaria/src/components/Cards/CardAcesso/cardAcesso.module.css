@@ -1,0 +1,74 @@
+{/* CSS do Componente CardAcesso */}
+
+{/* Inicio da Classe do Formato do Card */}
+.card {
+    background-color: var(--BrancoMain);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+{/* Fim da Classe do Formato do Card */}
+
+{/* Inicio da Classe com o Titulo e o Icone */}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+{/* Fim da Classe com o Titulo e o Icone */}
+
+{/* Inicio da Classe do Titulo */}
+.titulo {
+    font: var(--Titulos);
+    color: var(--PretoTexto);
+}
+{/* Fim da Classe do Titulo */}
+
+{/* Inicio da Classe do Icone */}
+.icon {
+    font-size: 1.6rem;
+    color: var(--PretoIcons);
+}
+{/* Fim da Classe do Icone */}
+
+{/* Inicio da Classe da Barra */}
+.hr {
+  border-top: 1px solid #bdb9b97a;
+}
+{/* Fim da Classe da Barra */}
+
+{/* Inicio da Classe do Texto */}
+.descricao {
+    font: var(Textos);
+    color: var(--CinzaTexto);
+    margin: 0.8rem 0 1.2rem;
+    min-height: 40px;
+}
+{/* Fim da Classe do Texto */}
+
+{/* Inicio da Classe do Botão */}
+.button {
+    background-color: var(--RoxoMain);
+    color: var(--BrancoMain);
+    border: none;
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background: var(--RoxoHover);
+}
+{/* Fim da Classe do Botão */}
