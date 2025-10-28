@@ -3,6 +3,7 @@ import styles from "../EditProduct/editproduct.module.css";
 import Formedit from "../../components/EditForm/formedit";
 
 const EditarProduto = () => {
+  // campos do formulário
   const campos = [
     { name: "nome", label: "Nome", placeholder: "Digite o nome" },
     { name: "marca", label: "Marca", placeholder: "Digite a marca" },
@@ -10,15 +11,31 @@ const EditarProduto = () => {
     { name: "preco", label: "Preço", type: "number", placeholder: "Digite o preço" },
   ];
 
-  const handleSalvar = (dados) => {
-    console.log("Produto:", dados);
-    alert("Produto salvo com sucesso!");
+  // valores iniciais do produto (simulando um produto já existente)
+  const valoresIniciais = {
+    nome: "",
+    marca: "",
+    quantidade: "",
+    preco: "",
+  };
+
+  // função de atualização (edição)
+  const handleAtualizar = (dados) => {
+    console.log("Atualizar produto:", dados);
+    alert("Produto atualizado com sucesso!");
+    // aqui poderia entrar sua lógica de PUT/UPDATE (ex: API)
   };
 
   return (
     <div className={styles.background}>
       <div className={styles.card}>
-        <Formedit titulo="Editar Produto" campos={campos} onSubmit={handleSalvar} />
+        <Formedit
+          titulo="Editar Produto"
+          modo="editar"                     // força modo edição
+          campos={campos}
+          valoresIniciais={valoresIniciais} // dados carregados
+          onUpdate={handleAtualizar}        // callback de update
+        />
       </div>
     </div>
   );
