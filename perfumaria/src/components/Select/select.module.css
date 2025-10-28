@@ -1,0 +1,46 @@
+/* === SELECT (mesmo visual do input) === */
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectField {
+  width: 400px;
+  height: 40px;
+  padding: 0 36px 0 10px;            /* espaço p/ a seta à direita */
+  border: 2px solid var(--RoxoMain);
+  border-radius: 5px;
+  font: var(--TextosDados);
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+  color: var(--PretoTexto);
+  transition: border-color 0.2s;
+  /* remove setas nativas */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.selectField:focus {
+  border-color: var(--RoxoMain);
+}
+
+/* seta do select (igual ao print) */
+.selectArrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;              /* clique passa no select */
+  font-size: 18px;                   /* pode trocar por svg/ícone se quiser */
+  color: #9a9a9a;                    /* cinza clarinho */
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+}
+
+/* opcional: cursor e hover */
+.selectField:hover {
+  cursor: pointer;
+}

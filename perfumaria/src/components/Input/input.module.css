@@ -1,29 +1,29 @@
-{/* CSS do Componente Input */}
+/* CSS do Componente Input */
 
-{/* Inicio da Classe Principal do Input */}
+/* Inicio da Classe Principal do Input */
 .inputGroup {
     margin-bottom: 20px;
 }
-{/* Fim da Classe Principal do Input */}
+/* Fim da Classe Principal do Input */
 
-{/* Inicio da Classe com o Texto Acima do Input */}
+/* Inicio da Classe com o Texto Acima do Input */
 .label {
     font: var(--Subtitulos);
     display: block;
     margin-bottom: 8px;
     color: var(--PretoTexto);
 }
-{/* Fim da Classe com o Texto Acima do Input */}
+/* Fim da Classe com o Texto Acima do Input */
 
-{/* Inicio da Classe do Formato do Input */}
+/* Inicio da Classe do Formato do Input */
 .inputWrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
-{/* Fim da Classe do Formato do Input */}
+/* Fim da Classe do Formato do Input */
 
-{/* Inicio da Classe do Campo de Texto do Input */}
+/* Inicio da Classe do Campo de Texto do Input */
 .inputField {
     width: 400px;
     height: 40px;
@@ -39,9 +39,9 @@
 .inputField:focus {
     border-color: var(--RoxoMain);
 }
-{/* Fim da Classe do Campo de Texto do Input */}
+/* Fim da Classe do Campo de Texto do Input */
 
-{/* Inicio da Classe do Icone do Olho no Campo */}
+/* Inicio da Classe do Icone do Olho no Campo */
 .passwordToggle {
     position: absolute;
     right: 15px;
@@ -55,4 +55,4 @@
     display: flex;
     align-items: center;
 }
-{/* Fim da Classe do Icone do Olho no Campo */}
+/* Fim da Classe do Icone do Olho no Campo */
