@@ -1,84 +1,95 @@
-{/* Classe de Criação da Página de Login */} 
-
-import React, { useState } from 'react'; 
-
-{/* Import da Biblioteca de Rotas */}
-import { useNavigate } from 'react-router-dom'; 
-
-{/* Import do Componente Input */}
-import Input from '../../components/Input/input'; 
-
-{/* Import do CSS da Página */}
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Input from '../../components/Input/input';
 import styles from './login.module.css';
 
-{/* Função de Criação da Página de Login */}
-const Login = ({ onLogin }) => {
-    const navigate = useNavigate(); 
-    
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: ''
-    });
+const Login = ({ onLogin}) => {
+  const navigate = useNavigate();
 
-{/* Função Para Alternar a Visualização das Informações no Campo Senha */}
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setCredentials(prev => ({ ...prev, [name]: value }));
-    };
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: ''
+  });
 
-{/* Função Temporária Para Permitir o Login */}
-    const handleSimulatedLogin = () => {
-        onLogin();
-        navigate('/'); 
-    };
-    
-    return (
-        <div className={styles.loginBackground}>
-            <div className={styles.loginCard}>
-                <h2>Login</h2>
+  const [erro, setErro] = useState('');
 
-            {/* Inicio da Chamada do Componente Input */}
-                <div>
-                    <Input
-                        label="Email"
-                        name="email"
-                        type="email"
-                        value={credentials.email}
-                        onChange={handleChange}
-                        required
-                    />
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials(prev => ({ ...prev, [name]: value }));
+  };
 
-                    <Input
-                        label="Senha"
-                        name="password"
-                        type="password"
-                        value={credentials.password}
-                        onChange={handleChange}
-                        required
-                    />
-            {/* Fim da Chamada do Componente Input */}
+  const handleLogin = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: credentials.email,
+          senha: credentials.password
+        })
+      });
 
-            {/* Criação do Botão do Formulário */}
-                    <button 
-                        onClick={handleSimulatedLogin} 
-                        style={{ 
-                            padding: '10px 20px', 
-                            backgroundColor: 'var(--RoxoMain)',
-                            font: 'var(--Textos)',
-                            color: 'var(--BrancoMain)',
-                            border: 'none', 
-                            cursor: 'pointer',
-                            borderRadius: '6px',
-                            width: '100%',
-                            marginTop: '20px'
-                        }}
-                    >
-                        Entrar  
-                    </button>
-                </div>
-            </div>
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErro(data.message || 'Erro no login');
+        return;
+      }
+
+      localStorage.setItem('user', JSON.stringify(data.vendedor));
+      onLogin(data.vendedor);
+      navigate('/');
+    } catch (err) {
+      setErro('Falha na conexão com o servidor');
+    }
+  };
+
+  return (
+    <div className={styles.loginBackground}>
+      <div className={styles.loginCard}>
+        <h2>Login</h2>
+
+        <div>
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={credentials.email}
+            onChange={handleChange}
+            required
+          />
+
+          <Input
+            label="Senha"
+            name="password"
+            type="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
+
+          {erro && <p style={{ color: 'red', marginTop: '10px' }}>{erro}</p>}
+
+          <button
+            onClick={handleLogin}
+            style={{
+              padding: '10px 20px',
+              backgroundColor: 'var(--RoxoMain)',
+              font: 'var(--Textos)',
+              color: 'var(--BrancoMain)',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: '6px',
+              width: '100%',
+              marginTop: '20px'
+            }}
+          >
+            Entrar
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Login;
