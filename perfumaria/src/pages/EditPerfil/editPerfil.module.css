@@ -1,0 +1,63 @@
+/* editPerfil.module.css */
+
+/* Fundo com gradiente e centralização total do card */
+.background {
+  width: 100%;
+  height: 100vh; /* deixa espaço pro header fixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  /* Gradiente ajustado com transição mais suave */
+  background: linear-gradient(
+    180deg,
+    #483d8b 0%,
+    #5a47b0 40%,
+    #6a5acd 70%,
+    #8a2be2 100%
+  );
+
+  /* Evita que algum container pai branco “vaze” */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Card centralizado */
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 32px 36px;
+  width: min(90vw, 520px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+  z-index: 1; /* garante que fique acima de qualquer overlay */
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 20px;
+  }
+}
+
+
