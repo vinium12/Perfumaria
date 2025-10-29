@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Table from '../../components/Table/table'; 
+import { useNavigate } from 'react-router-dom';
 import styles from './produtos.module.css'; 
 
 const Produtos = () => {
+    const navigate = useNavigate();
     const [produtos, setProdutos] = useState([]); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -12,18 +14,62 @@ const Produtos = () => {
 
     // 1. Funções de Ação (Handlers)
     const handleEdit = (produto) => {
-        console.log("✏️ Editar Produto:", produto);
-        // Lógica de redirecionamento para /editarproduto?id=produto.id viria aqui.
-        alert(`Preparando para editar: ${produto.nome}`);
+    console.log("✏️ Editar Produto:", produto);
+    
+    // O backend espera o ID na URL, então passamos o ID como parâmetro de estado ou na URL
+    
+    // ✅ Redireciona para a rota de edição de produto
+    navigate(`/editarproduto?id=${produto.id}`, { 
+        // Passa o objeto completo do produto para a página de edição via state (mais fácil de carregar)
+        state: { produto: produto } 
+    });
+};
+
+
+    const handleDelete = async (produto) => {
+    console.log("🗑️ Excluir Produto:", produto);
+    
+    // 1. Confirmação do Usuário
+    if (!window.confirm(`Tem certeza que deseja excluir o produto ${produto.nome}?`)) {
+        return; // Sai se o usuário cancelar
+    }
+
+    try {
+        const url = `http://localhost:3000/produtos/${produto.id}`;
+        
+        // 2. Requisição DELETE para o Backend
+        const res = await fetch(url, {
+            method: 'DELETE',
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.message || 'Falha na exclusão.');
+        }
+
+        // 3. SUCESSO: Atualiza a lista no frontend (sem precisar recarregar tudo)
+        setProdutos(produtos.filter(p => p.id !== produto.id));
+        alert(`Produto ${produto.nome} excluído com sucesso!`);
+
+    } catch (err) {
+        console.error("Erro ao excluir produto:", err);
+        alert(`Erro ao excluir: ${err.message}`);
+    }
+};
+
+    const handleAddProduct = () => {
+        // ✅ NAVEGA PARA A ROTA DE CADASTRO DE PRODUTO
+        navigate('/cadastrarproduto'); 
     };
 
-    const handleDelete = (produto) => {
-        console.log("🗑️ Excluir Produto:", produto);
-        if (window.confirm(`Tem certeza que deseja excluir o produto ${produto.nome}?`)) {
-            // Lógica de exclusão da API (DELETE) viria aqui.
-            alert(`Produto ${produto.nome} excluído (simulado).`);
-        }
-    };
+    const NovoProdutoButton = (
+        <button 
+            onClick={handleAddProduct} // ✅ Anexa a função de navegação
+            className={styles.newButton} // Use a classe que você definir para o botão
+        >
+            Adicionar Novo Produto
+        </button>
+    );
 
     // ✅ Lógica de FETCH COMPLETADA
     useEffect(() => {
@@ -91,7 +137,7 @@ const Produtos = () => {
                     onEdit={handleEdit} 
                     onDelete={handleDelete}
                     
-                    actionButton={<button className={styles.newButton}>Adicionar Novo Produto</button>}
+                    actionButton={NovoProdutoButton}
                 />
 
             </div>

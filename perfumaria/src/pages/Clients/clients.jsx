@@ -22,12 +22,15 @@ const Clients = () => {
             }
 
             const vendedor = JSON.parse(storedUser);
-            const regiaoId = vendedor.regiao;
-
-            if (!regiaoId) {
-                setError("ID da Região não encontrado na sessão.");
-                setLoading(false);
-                return;
+            const regiaoId = vendedor.regiaoId;
+           
+           if (regiaoId === undefined || regiaoId === null) {
+                // Se não for encontrado, e não for o valor 0 (caso 0 seja permitido)
+                if (regiaoId !== 0) { 
+                    setError("ID da Região não encontrado na sessão.");
+                    setLoading(false);
+                    return;
+                }
             }
             
             try {
