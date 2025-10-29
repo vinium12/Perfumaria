@@ -1,4 +1,4 @@
-import { getVendedores } from "../models/vendedorModel.js";
+import { getVendedores, updateVendedor } from "../models/vendedorModel.js";
 import pool from "../config/db.js"; // Sua conexão com o banco
 
 // ----------------------------------------------------
@@ -64,5 +64,31 @@ export const listarVendedores = async (req, res) => {
     } catch (err) {
         console.error("Erro ao buscar vendedores:", err);
         res.status(500).json({ message: "Erro ao buscar vendedores" });
+    }
+};
+
+export const atualizarVendedor = async (req, res) => {
+    const { id } = req.params;
+    const { email, telefone, endereco } = req.body;
+    
+    // Validação básica dos campos
+    if (!email || !telefone || !endereco) {
+        return res.status(400).json({ message: "Todos os campos são obrigatórios." });
+    }
+
+    try {
+        const affectedRows = await updateVendedor(id, email, telefone, endereco);
+        
+        if (affectedRows === 0) {
+            // Se 0 linhas foram afetadas, o vendedor não existe ou os dados eram os mesmos
+            return res.status(404).json({ message: "Vendedor não encontrado ou dados inalterados." });
+        }
+        
+        // Retorna sucesso
+        res.json({ message: "Perfil atualizado com sucesso." });
+        
+    } catch (error) {
+        console.error("Erro ao atualizar perfil do vendedor:", error);
+        res.status(500).json({ message: "Erro interno ao atualizar perfil." });
     }
 };

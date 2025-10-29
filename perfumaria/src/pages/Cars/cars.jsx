@@ -23,7 +23,7 @@ const Cars = () => {
             }
 
             const vendedor = JSON.parse(storedUser);
-            const regiaoId = vendedor.regiao; 
+            const regiaoId = vendedor.regiaoId; 
 
             if (regiaoId === undefined || regiaoId === null) {
                  // Corrigido para permitir o valor 0 (se for o caso)
