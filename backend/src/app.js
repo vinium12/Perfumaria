@@ -6,7 +6,7 @@ import vendedorRoutes from "./routes/vendedorRoutes.js";
 import authRoutes from "./routes/authRoutes.js"; // 👈 NÃO ESQUEÇA DE IMPORTAR AS ROTAS DE AUTH
 import clienteRoutes from "./routes/clienteRoutes.js";
 import produtoRoutes from "./routes/produtoRoutes.js";
-
+import dashboardRoutes from "./routes/dashboardRoutes.js"; 
 
 const app = express();
 
@@ -20,6 +20,7 @@ app.use("/vendedores", vendedorRoutes);
 app.use("/auth", authRoutes); 
 app.use("/clientes", clienteRoutes); // Isso define o prefixo /clientes
 app.use("/produtos", produtoRoutes); // Isso define o prefixo /produtos
+app.use("/dashboard", dashboardRoutes);
 
 // 👈 Exporta o objeto 'app' para que server.js possa usá-lo
 export default app;
