@@ -1,0 +1,168 @@
+/* Definição de Cores (Baseada no seu tema roxo) */
+:root {
+    --primary-color: #6A5ACD; /* Roxo principal */
+    --primary-hover: #5846b0;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --bg-light: #f8f9fa;
+    --border-color: #e9ecef;
+}
+
+/* ------------------ CARD PRINCIPAL (Nota Fiscal) ------------------ */
+
+.notaCard {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-color); /* Linha roxa lateral */
+    border-radius: 8px;
+    padding: 15px 20px;
+    width: 100%; /* Largura fixa para listar lado a lado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ------------------ CABEÇALHO ------------------ */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.icon {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    flex-grow: 1;
+}
+
+.status {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* Estilos de Status Dinâmicos */
+.concluida {
+    background-color: #d4edda;
+    color: var(--success-color);
+}
+.pendente {
+    background-color: #fff3cd;
+    color: #ffc107;
+}
+.cancelada {
+    background-color: #f8d7da;
+    color: var(--danger-color);
+}
+
+
+/* ------------------ DETALHES ------------------ */
+
+.infoSection {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.label {
+    min-width: 60px;
+    display: inline-block;
+}
+
+/* ------------------ ITENS (Nota Fiscal Detalhe) ------------------ */
+
+.sectionTitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #495057;
+}
+
+.itemsList {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 3px 0;
+}
+
+.itemDesc {
+    flex-grow: 1;
+    font-weight: 500;
+}
+.itemQtd {
+    margin-left: 10px;
+    min-width: 50px;
+    text-align: right;
+}
+.itemPreco {
+    min-width: 80px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
+/* ------------------ RODAPÉ E AÇÕES ------------------ */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.actions button {
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.editBtn {
+    color: #007bff; /* Cor azul para edição */
+}
+
+.editBtn:hover {
+    background-color: #e0f7ff;
+}
+
+.deleteBtn {
+    color: var(--danger-color);
+}
+
+.deleteBtn:hover {
+    background-color: #fce4e6;
+}

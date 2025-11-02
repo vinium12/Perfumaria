@@ -1,0 +1,71 @@
+/* src/pages/Vendas/vendas.module.css */
+
+.vendasContainer{
+    /* Garante que o contêiner principal controle o tamanho */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0 100px 20px 100px; /* Ajusta o padding para o conteúdo */
+    box-sizing: border-box;
+    /* max-height: 100vh; <- Não use altura fixa aqui, a página App.jsx já cuida disso */
+}
+
+/* ------------------ 1. CABEÇALHO E BOTÃO FIXO ------------------ */
+
+.headerActions {
+    width: 100%;
+    max-width: 100%; /* Ocupa o espaço dentro do padding */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding-bottom: 25px; /* Espaçamento abaixo do cabeçalho */
+}
+
+.pageTitle{
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.newButton {
+    background-color: #6A5ACD; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.newButton:hover {
+    background-color: #5846b0;
+}
+
+/* ------------------ 2. ÁREA DE ROLAGEM ------------------ */
+
+.scrollableCards {
+    /* Define uma altura MÁXIMA para o contêiner de cards */
+    max-height: 70vh; /* Ajuste este valor (70% da altura da tela visível) */
+    overflow-y: auto; /* 🚨 HABILITA A ROLAGEM DENTRO DESTA DIV */
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.cardsGrid {
+    /* Organiza os cards em colunas (linhas verticais) */
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; /* Espaçamento VERTICAL entre os cards */
+    padding-right: 15px; /* Evita que a barra de rolagem toque o conteúdo */
+}
+
+.loading, .error, .noData {
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+    color: #495057;
+    font-size: 1.1rem;
+}
