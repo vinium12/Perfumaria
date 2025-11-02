@@ -10,8 +10,6 @@ const Select = ({
   options = [], // pode ser [{label, value}] ou ["Opção 1", "Opção 2"]
   ...rest
 }) => {
-
-  
   // normaliza opções se vierem como string[]
   const normalized = options.map((opt) =>
     typeof opt === "string" ? { label: opt, value: opt } : opt
@@ -47,7 +45,9 @@ const Select = ({
         </select>
 
         {/* seta (chevron) */}
-        <span className={styles.selectArrow} aria-hidden="true">▾</span>
+        <span className={styles.selectArrow} aria-hidden="true">
+          ▾
+        </span>
       </div>
     </div>
   );

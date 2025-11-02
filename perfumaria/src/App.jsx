@@ -24,7 +24,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Redireciona se estiver logado e acessar login
+  // Redireciona para home se já estiver logado e tentar acessar login
   useEffect(() => {
     if (isLoggedIn && location.pathname === "/login") {
       navigate("/");
