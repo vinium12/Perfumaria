@@ -17,6 +17,7 @@ import EditarPerfil from "./pages/EditPerfil/editPerfil";
 import EditarProduto from "./pages/EditProduct/editproduct";
 import CadastrarProduto from "./pages/CadastrarProduct/cadastrarProduct";
 import Produtos from "./pages/Produtos/produtos";
+import Vendas from "./pages/Vendas/vendas";
 import "./App.css";
 
 // ---------------------- COMPONENTE AUXILIAR ----------------------
@@ -87,6 +88,15 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <Produtos />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/vendas"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Vendas/>
               </ProtectedRoute>
             }
           />
