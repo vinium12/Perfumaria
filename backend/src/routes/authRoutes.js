@@ -3,13 +3,13 @@
 import express from "express";
 
 // Importa a função login do seu controlador
-import { login } from '../controllers/vendedorController.js'; 
+import { login } from "../controllers/vendedorController.js";
 
 const router = express.Router();
 
 // Define que requisições POST para /login devem ser tratadas pela função login
 // O prefixo /auth foi definido em app.js, então esta rota completa é POST /auth/login
-router.post('/login', login); 
+router.post("/login", login);
 
 export default router;
 // import pool from "../config/db.js";

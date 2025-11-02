@@ -9,8 +9,6 @@ import vendedoresRoutes from "./src/routes/vendedorRoutes.js";
 import app from "./src/app.js";
 import veiculosRoutes from "./src/routes/veiculosRoutes.js";
 
-
-
 dotenv.config();
 app.use("/veiculos", veiculosRoutes);
 // Define a porta, usando a variável de ambiente ou 3000 como padrão
@@ -18,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 // 2. Inicia o servidor
 app.listen(PORT, () => {
-    console.log(`✅ Servidor rodando em: http://localhost:${PORT}`);
+  console.log(`✅ Servidor rodando em: http://localhost:${PORT}`);
 });
 
 // Nota: Você pode precisar ajustar a chamada "import app from './app.js';"
