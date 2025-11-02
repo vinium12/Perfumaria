@@ -1,5 +1,8 @@
 import express from "express";
-import { listarVendedores, atualizarVendedor } from "../controllers/vendedorController.js";
+import {
+  listarVendedores,
+  atualizarVendedor,
+} from "../controllers/vendedorController.js";
 
 const router = express.Router();
 
