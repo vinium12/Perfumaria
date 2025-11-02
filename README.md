@@ -1,5 +1,5 @@
 <div align = "center">
-<img src = "" alt = "Logo do Projeto" width = "250px">
+<img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/T-Scent%20Logo.png" alt = "Logo do Projeto" width = "250px">
 </div>
 
 # TScent - Website de Gerenciamento Para uma Perfumaria
@@ -68,10 +68,10 @@
 
 ## 📷 Telas do TScent
 <p align = "center">
-        <img src = "" alt = "Nome da Tela" /> 
-        <img src = "" alt = "Nome da Tela" />
-        <img src = "" alt = "Nome da Tela" />
-        <img src = "" alt = "Nome da Tela" />
+        <img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/Home%20Page.png" alt = "Dashboard" width = "500px" /> 
+        <img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/CRUDs%20Page.png" alt = "Página de Visualização de Dados" width = "500px" />
+        <img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/Login%20Page.png" alt = "Página de Login" width = "500px"/>
+        <img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/Register%20Page.png" alt = "Página de Exemplo de Registro" width = "500px" />
 </p>
 
 <br>
@@ -121,5 +121,5 @@ O projeto foi desenvolvido como parte da disciplina **Banco de Dados II**, do cu
 ---
 
 <div align = "center">
-<img src = "" alt = "Logo do Projeto" width = "250px">
+<img src = "https://github.com/vinium12/Perfumaria/blob/main/readme/T-Scent%20Logo.png" alt = "Logo do Projeto" width = "250px">
 </div>
