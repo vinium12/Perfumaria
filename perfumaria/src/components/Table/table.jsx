@@ -4,17 +4,17 @@ import styles from "./table.module.css";
 
 // 🚨 FUNÇÃO DE NORMALIZAÇÃO: Essencial para remover acentos e padronizar o acesso
 const normalizeHeader = (header) => {
-    // 1. Converte para minúsculo
-    let key = header.toLowerCase();
-    
-    // 2. Remove acentos e cedilha de forma robusta
-    // Isso transforma 'endereço' em 'endereco'
-    key = key.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
-    
-    // 3. Remove espaços (se houver)
-    key = key.replace(/\s/g, ''); 
-    
-    return key;
+  // 1. Converte para minúsculo
+  let key = header.toLowerCase();
+
+  // 2. Remove acentos e cedilha de forma robusta
+  // Isso transforma 'endereço' em 'endereco'
+  key = key.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // 3. Remove espaços (se houver)
+  key = key.replace(/\s/g, "");
+
+  return key;
 };
 
 function Table({
@@ -23,7 +23,7 @@ function Table({
   showActions = false,
   onEdit,
   onDelete,
-  actionButton
+  actionButton,
 }) {
   return (
     <>
@@ -41,14 +41,13 @@ function Table({
           data.map((row, i) => (
             <div key={i} className={styles.row}>
               {columns.map((col, j) => {
-                
                 // 🚨 CORREÇÃO APLICADA: Gera a chave de acesso
                 const cellKey = normalizeHeader(col);
-                
+
                 return (
                   <div key={j} className={styles.cell}>
                     {/* Acessa o valor do dado usando a chave normalizada */}
-                    {row[cellKey]} 
+                    {row[cellKey]}
                   </div>
                 );
               })}

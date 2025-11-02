@@ -1,47 +1,47 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Input from '../../components/Input/input';
-import styles from './login.module.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Input from "../../components/Input/input";
+import styles from "./login.module.css";
 
-const Login = ({ onLogin}) => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
-  const [erro, setErro] = useState('');
+  const [erro, setErro] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCredentials(prev => ({ ...prev, [name]: value }));
+    setCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleLogin = async () => {
     try {
-      const res = await fetch('http://localhost:3000/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: credentials.email,
-          senha: credentials.password
-        })
+          senha: credentials.password,
+        }),
       });
 
       const data = await res.json();
       console.log("🔍 Backend respondeu:", data);
 
       if (!res.ok) {
-        setErro(data.message || 'Erro no login');
+        setErro(data.message || "Erro no login");
         return;
       }
 
-      localStorage.setItem('user', JSON.stringify(data.vendedor));
+      localStorage.setItem("user", JSON.stringify(data.vendedor));
       onLogin(data.vendedor);
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      setErro('Falha na conexão com o servidor');
+      setErro("Falha na conexão com o servidor");
     }
   };
 
@@ -69,20 +69,20 @@ const Login = ({ onLogin}) => {
             required
           />
 
-          {erro && <p style={{ color: 'red', marginTop: '10px' }}>{erro}</p>}
+          {erro && <p style={{ color: "red", marginTop: "10px" }}>{erro}</p>}
 
           <button
             onClick={handleLogin}
             style={{
-              padding: '10px 20px',
-              backgroundColor: 'var(--RoxoMain)',
-              font: 'var(--Textos)',
-              color: 'var(--BrancoMain)',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: '6px',
-              width: '100%',
-              marginTop: '20px'
+              padding: "10px 20px",
+              backgroundColor: "var(--RoxoMain)",
+              font: "var(--Textos)",
+              color: "var(--BrancoMain)",
+              border: "none",
+              cursor: "pointer",
+              borderRadius: "6px",
+              width: "100%",
+              marginTop: "20px",
             }}
           >
             Entrar
