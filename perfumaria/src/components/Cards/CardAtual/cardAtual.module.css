@@ -1,0 +1,67 @@
+{/* CSS do Componente CardAtual */}
+
+{/* Inicio da Classe do Formato do Card */}
+.card {
+    background-color: var(--BrancoMain);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+{/* Fim da Classe do Formato do Card */}
+
+{/* Inicio da Classe com o Titulo e a Data */}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+{/* Fim da Classe com o Titulo e a Data */}
+
+{/* Inicio da Classe do Titulo */}
+.titulo {
+    font: var(--Titulos);
+    color: var(--PretoTexto);
+    margin-bottom: 0.8rem;
+}
+{/* Fim da Classe do Titulo */}
+
+{/* Inicio da Classe da Data */}
+.data {
+    font: var(--Textos);
+    color: var(--CinzaTexto);
+}
+{/* Fim da Classe da Data */}
+
+{/* Inicio da Classe da Barra */}
+.hr {
+  border-top: 1px solid #bdb9b97a;
+}
+{/* Fim da Classe da Barra */}
+
+{/* Inicio da Classe com a Lista de Informações do Carro */}
+.lista {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.lista li {
+    font-size: 0.95rem;
+    color: #444;
+    margin: 0.25rem 0;
+}
+
+.lista li strong {
+    color: var(--PretoTexto);
+}
+{/* Fim da Classe com a Lista de Informações do */}

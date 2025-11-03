@@ -9,6 +9,7 @@ import { FaCar } from "react-icons/fa6";
 import CardAcesso from "./../../components/Cards/CardAcesso/cardAcesso";
 import CardDados from "../../components/Cards/CardDados/cardDados";
 import CardPerfil from "../../components/Cards/CardPerfil/cardPerfil";
+import CardAtual from "../../components/Cards/CardAtual/cardAtual";
 
 // import styles from './home.module.css';
 
@@ -144,6 +145,15 @@ const Dashboard = () => {
         qtnCli={dadosCardDados.qtnCli || "N/A"}
         veiculo={dadosCardDados.qtnVeiculo || "N/A"}
         pontosE={dadosCardDados.pontosE || []}
+      />
+
+    {/* Card com os Dados do Veículo Atual */}
+      <CardAtual 
+        data="26/10/2025"
+        marca="Chevrolet"
+        modelo="Prisma 2021"
+        placa="BRA2E19"
+        cor="Preto"
       />
 
       {/* Card de PERFIL (Usando dados dinâmicos do estado) */}
