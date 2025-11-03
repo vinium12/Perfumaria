@@ -19,24 +19,18 @@ import CadastrarProduto from "./pages/CadastrarProduct/cadastrarProduct";
 import Produtos from "./pages/Produtos/produtos";
 import Vendas from "./pages/Vendas/vendas";
 import "./App.css";
+
 // ---------------------- COMPONENTE AUXILIAR ----------------------
 function AppRouter({ isLoggedIn, onLogin, onLogout }) {
   const location = useLocation();
-  const navigate = useNavigate(); // ✅ Agora está dentro do Router
+  const navigate = useNavigate();
 
-  // Se logar, redireciona pra home automaticamente
+  // Redireciona para home se já estiver logado e tentar acessar login
   useEffect(() => {
     if (isLoggedIn && location.pathname === "/login") {
       navigate("/");
     }
   }, [isLoggedIn, location.pathname, navigate]);
-
-  // Logout automático se estiver logado e voltar pro login
-  // useEffect(() => {
-  //     if (location.pathname === '/login' && isLoggedIn) {
-  //         onLogout();
-  //     }
-  // }, [location.pathname, isLoggedIn, onLogout]);
 
   let path = location.pathname.substring(1);
   if (path === "") path = "home";
@@ -143,9 +137,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
 
 // ---------------------- PROTEÇÃO DE ROTAS ----------------------
 const ProtectedRoute = ({ children, isLoggedIn }) => {
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+  if (!isLoggedIn) return <Navigate to="/login" replace />;
   return children;
 };
 
