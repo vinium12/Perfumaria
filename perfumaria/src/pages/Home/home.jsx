@@ -17,6 +17,12 @@ import CardDados from "../../components/Cards/CardDados/cardDados";
 import CardPerfil from "../../components/Cards/CardPerfil/cardPerfil";
 import CardAtual from "../../components/Cards/CardAtual/cardAtual";
 
+{
+  /* Import do CSS da Página */
+}
+import styles from './home.module.css'
+
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -107,8 +113,9 @@ const Dashboard = () => {
   const dadosCardDados = dadosRegiao || {};
 
   return (
-    <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-      
+
+      <div className={styles.dashboard}>
+        <div className={styles.colunaEsq}>
       {/* Card com as Informações Base do Usuário */}
       <CardPerfil
         email={dadosPerfil.email}
@@ -116,30 +123,6 @@ const Dashboard = () => {
         tel={dadosPerfil.tel}
         regiao={dadosPerfil.regiao}
         onEdit={handleEditPerfil}
-      />
-      {/* Card com as Informações do Veículo Atual */}
-      <CardAtual
-        data="26/10/2025"
-        marca="Chevrolet"
-        modelo="Prisma 2021"
-        placa="BRA2E19"
-        cor="Preto"
-      />
-
-      {/* Card de Acesso dos Produtos */}
-      <CardAcesso
-        titulo="Produtos"
-        descricao="Acesse sua lista de produtos"
-        icon={HiShoppingBag}
-        onClick={() => handleNavigate("/produtos")}
-      />
-
-      {/* Card de Acesso dos Clientes */}
-      <CardAcesso
-        titulo="Clientes"
-        descricao="Visualize os clientes da sua região"
-        icon={IoPersonSharp}
-        onClick={() => handleNavigate("/clientes")}
       />
 
       {/* Card com as Informações da Região */}
@@ -151,6 +134,33 @@ const Dashboard = () => {
         veiculo={dadosCardDados.qtnVeiculo || "N/A"}
         pontosE={dadosCardDados.pontosE || []}
       />
+        </div>
+    
+      <div className={styles.colunaDir}>
+      {/* Card com as Informações do Veículo Atual */}
+      <CardAtual
+        data="26/10/2025"
+        marca="Chevrolet"
+        modelo="Prisma 2021"
+        placa="BRA2E19"
+        cor="Preto"
+      />
+
+       {/* Card de Acesso dos Produtos */}
+      <CardAcesso
+        titulo="Produtos"
+        descricao="Acesse sua lista de produtos"
+        icon={HiShoppingBag}
+        onClick={() => handleNavigate("/produtos")}
+      />
+
+         {/* Card de Acesso dos Clientes */}
+      <CardAcesso
+        titulo="Clientes"
+        descricao="Visualize os clientes da sua região"
+        icon={IoPersonSharp}
+        onClick={() => handleNavigate("/clientes")}
+      />
 
       {/* Card de Acesso das Vendas */}
       <CardAcesso
@@ -160,7 +170,7 @@ const Dashboard = () => {
         onClick={() => handleNavigate("/vendas")}
       />
 
-      {/* Card de Acesso da Frota */}
+       {/* Card de Acesso da Frota */}
       <CardAcesso
         titulo="Frota"
         descricao="Visualize a frota de veículos da sua região"
@@ -168,6 +178,8 @@ const Dashboard = () => {
         onClick={() => handleNavigate("/frota")}
       />
     </div>
+
+      </div>
   );
 };
 

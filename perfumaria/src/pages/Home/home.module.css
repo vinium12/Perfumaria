@@ -1,0 +1,31 @@
+{/* CSS da Página Home */}
+
+{/* Inicio da Classe que Agrupa Todos os Cards */}
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+{/* Fim da Classe que Agrupa Todos os Cards */}
+
+{/* Inicio da Classe que Agrupa o Card de Perfil e Região */}
+.colunaEsq {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+{/* Fim da Classe que Agrupa o Card de Perfil e Região */}
+
+{/* Inicio da Classe que Agrupa os Cards de Acesso e o CardAtual */}
+.colunaDir {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1.5rem;
+}
+
+.colunaDir > :nth-child(1) {
+  grid-column: span 2; 
+}
+{/* Fim da Classe que Agrupa os Cards de Acesso e o CardAtual */}
