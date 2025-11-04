@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
+  gap: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--Textos);
   flex-wrap: wrap;
@@ -16,9 +17,9 @@
 
 {/* Inicio da Classe com o Título do Projeto */}
 .headerTitle {
-  font-size: 1.6rem;
-  font-weight: 500;
+  font: var(--Titulos);
   margin: 0;
+  text-align: left;
 }
 {/* Fim da Classe com o Título do Projeto */}
 
@@ -26,6 +27,8 @@
 .headerNav {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-grow: 1;
   flex-wrap: wrap;
   gap: 25px;
 }
@@ -35,31 +38,48 @@
 .navItem {
   color: var(--BrancoMain);
   text-decoration: none;
-  font: var(--TextosDados);
+  font: var(--Titulos);
+  font-size: 1.4rem;
   padding: 6px 8px;
+  position: relative;
   border-bottom: 2px solid transparent;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
-.navItem:hover {
-  transform: scale(1.08);
+.navItem::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px; 
+  width: 100%;
+  background-color: var(--BrancoMain);
+  transform: scaleX(0); 
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
-.active {
-  border-bottom: 2px solid var(--BrancoMain);
-  font-weight: 700;
+.navItem:hover::after {
+  transform: scaleX(1); 
 }
+
+.active::after {
+  transform: scaleX(1); 
+}
+
 {/* Fim da Classe com os Links da Navbar */}
 
 {/* Inicio da Classe do Botão Sair */}
 .logoutButton {
+  font: var(--Titulos);
+  font-size: 1rem;
   background-color: var(--VermelhoHover);
   color: var(--BrancoMain);
   border: none;
   border-radius: 6px;
-  padding: 8px 25px;
+  padding: 5px 30px;
   cursor: pointer;
-  font-weight: 600;
+  flex-shrink: 0;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 

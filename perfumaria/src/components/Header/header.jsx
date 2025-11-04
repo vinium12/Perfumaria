@@ -35,23 +35,25 @@ const Header = ({ isLoggedIn, activeScreen, onLogout }) => {
       {/* Começo do Header */}
       <h1 className={styles.headerTitle}>T-Scent</h1> {/* Título da Navbar */}
       {isLoggedIn ? (
-        <nav className={styles.headerNav}>
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`${styles.navItem} ${
-                item.name === activeScreen ? styles.active : ""
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+        <>
+          <nav className={styles.headerNav}>
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`${styles.navItem} ${
+                  item.name === activeScreen ? styles.active : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
           <button className={styles.logoutButton} onClick={onLogout}>
             Sair
           </button>
-        </nav>
+        </>
       ) : (
         <div />
       )}
