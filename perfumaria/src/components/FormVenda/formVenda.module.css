@@ -1,0 +1,133 @@
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  background: transparent;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 32px 40px;
+  width: min(95vw, 950px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Labels */
+.label {
+  font: var(--Subtitulos);
+  color: var(--PretoTexto);
+  font-size: 20px;
+  display: block;
+}
+
+/* Wrappers e Campos */
+.selectWrapper,
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.selectField,
+.inputField {
+  border: 2px solid var(--RoxoMain);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font: var(--TextosDados);
+  color: var(--PretoTexto);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  height: 40px;
+}
+
+.selectField {
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.selectArrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--RoxoMain);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+/* Linha de produtos */
+.itensRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Botões */
+.addButton {
+  background: var(--RoxoMain);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.addButton:hover {
+  background: #5b3fd5;
+}
+
+.button {
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+  height: 40px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--RoxoMain);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.15s ease, background 0.15s ease;
+}
+
+.button:hover {
+  background: #5b3fd5;
+  filter: brightness(0.98);
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--PretoTexto);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

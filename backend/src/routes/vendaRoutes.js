@@ -1,15 +1,16 @@
 import express from "express";
-import { getNotas } from "../controllers/vendaController.js";
+import { 
+  getNotas, 
+  cadastrarVenda, 
+  atualizarVenda, 
+  excluirVenda 
+} from "../controllers/vendaController.js";
 
 const router = express.Router();
 
-// Listar todas as vendas
 router.get("/", getNotas);
-
-// Criar nova venda
-// router.post("/", createVenda);
-
-// Deletar uma venda
-// router.delete("/:id", deleteVenda);
+router.post("/", cadastrarVenda);
+router.put("/:id", atualizarVenda);
+router.delete("/:id", excluirVenda);
 
 export default router;

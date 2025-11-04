@@ -87,7 +87,6 @@
     margin-top: 5px;
     color: #495057;
 }
-
 .itemsList {
     background-color: white;
     border: 1px solid #dee2e6;
@@ -106,14 +105,23 @@
     flex-grow: 1;
     font-weight: 500;
 }
-.itemQtd {
-    margin-left: 10px;
-    min-width: 50px;
-    text-align: right;
+
+/* 🚨 CLASSE DE UTILIDADE PARA VALORES NUMÉRICOS */
+.itemValor {
+    text-align: right; /* ✅ O essencial: Alinha o conteúdo à direita */
+    display: inline-block; /* Garante que o alinhamento funcione */
 }
+
+/* Ajusta Qtd para usar a classe de alinhamento e largura mínima */
+.itemQtd {
+    /* Mantém a margem do seu código original */
+    margin: 0 10px; 
+    min-width: 80px; /* Aumentado para acomodar "Qtd: 100" */
+}
+
+/* Ajusta Preço Unitário */
 .itemPreco {
-    min-width: 80px;
-    text-align: right;
+    min-width: 120px; /* ✅ Aumentado para acomodar R$ 999,99 ou mais */
     font-weight: 600;
     color: var(--primary-color);
 }

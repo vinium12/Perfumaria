@@ -1,4 +1,11 @@
 /* === SELECT (mesmo visual do input) === */
+.label {
+    font: var(--Subtitulos);
+    display: block;
+    margin-bottom: 8px;
+    color: var(--PretoTexto);
+    font-size: 18px;
+}
 
 .selectWrapper {
   position: relative;
@@ -7,7 +14,7 @@
 }
 
 .selectField {
-  width: 400px;
+  width: 100%;
   height: 40px;
   padding: 0 36px 0 10px;            /* espaço p/ a seta à direita */
   border: 2px solid var(--RoxoMain);

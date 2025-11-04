@@ -17,7 +17,9 @@ import EditarPerfil from "./pages/EditPerfil/editPerfil";
 import EditarProduto from "./pages/EditProduct/editproduct";
 import CadastrarProduto from "./pages/CadastrarProduct/cadastrarProduct";
 import Produtos from "./pages/Produtos/produtos";
+import EditarVenda from "./pages/EditarVendas/editarVenda";
 import Vendas from "./pages/Vendas/vendas";
+import CadastrarVenda from "./pages/CadastrarVenda/cadastrarVenda";
 import "./App.css";
 
 // ---------------------- COMPONENTE AUXILIAR ----------------------
@@ -40,7 +42,9 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
     location.pathname === "/login" ||
     location.pathname === "/editar" ||
     location.pathname === "/editarproduto" ||
-    location.pathname === "/cadastrarproduto"
+    location.pathname === "/cadastrarproduto" ||
+    location.pathname === "/cadastrarvenda" ||
+    location.pathname.startsWith("/editarvenda") // 👈 aqui!
       ? "0"
       : "20px 100px";
 
@@ -120,10 +124,29 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
           />
 
           <Route
+            path="/editarvenda/:id"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <EditarVenda />
+              </ProtectedRoute>
+            }
+          />
+
+
+          <Route
             path="/cadastrarproduto"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <CadastrarProduto />
+              </ProtectedRoute>
+            }
+          />
+
+           <Route
+            path="/cadastrarvenda"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <CadastrarVenda />
               </ProtectedRoute>
             }
           />
