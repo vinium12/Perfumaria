@@ -12,20 +12,13 @@ import styles from "./cardDados.module.css";
 {
   /* Função de Criação do Card */
 }
-const CardDados = ({
-  titulo,
-  regiao,
-  qtnVen,
-  qtnCli,
-  veiculo,
-  pontosE = [],
-}) => {
+const CardDados = ({ regiao, qtnVen, qtnCli, veiculo, pontosE = [] }) => {
   return (
     <div className={styles.card}>
-      <h3 className={styles.titulo}>{titulo}</h3>
-
-      <div className={styles.sessao}>
-        <h4 className={styles.subtitulo}>Detalhes da região:</h4>
+      <h3 className={styles.titulo}>Região</h3>
+      <hr className={styles.hr} />
+      <div className={styles.detalhes}>
+        <p className={styles.subtitulo}>Detalhes da Região:</p>
         <ul className={styles.lista}>
           <li>
             <strong>Região:</strong> {regiao}
@@ -40,10 +33,10 @@ const CardDados = ({
             <strong>Veículos:</strong> {veiculo}
           </li>
         </ul>
+        <hr className={styles.hr2} />
       </div>
-
-      <div className={styles.sessao}>
-        <h4 className={styles.subtitulo}>Pontos estratégicos:</h4>
+      <div className={styles.pontosE}>
+        <p className={styles.subtitulo2}>Pontos Estratégicos:</p>
         <ul className={styles.pontos}>
           {pontosE.map((ponto, index) => (
             <li key={index}>{ponto}</li>

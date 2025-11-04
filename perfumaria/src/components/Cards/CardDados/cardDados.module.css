@@ -24,49 +24,65 @@
 .titulo {
     font: var(--Titulos);
     color: var(--PretoTexto);
-    margin-bottom: 0.5rem;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 {/* Fim da Classe do Titulo */}
 
-{/* Inicio da Classe de Divisória do Card */}
-.sessao {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+{/* Inicio da Classe da Barra */}
+.hr {
+    border-top: 1px solid #bdb9b97a;
+    margin: -30px 20px 0 10px;
 }
-{/* Fim da Classe de Divisória do Card */}
+{/* Fim da Classe da Barra */}
 
 {/* Inicio da Classe do Subtitulo */}
 .subtitulo {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.2rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.2rem;
+    font: var(--Subtitulos);
+    margin-bottom: 50px;
+    margin-left: 20px;
 }
 {/* Fim da Classe do Subtitulo */}
 
-{/* Inicio da Classe dos Pontos Estratégicos */}
-.lista, .pontos {
+{/* Inicio da Classe dos Detalhes */}
+.lista {
     list-style: none;
-    padding-left: 0;
-    margin: 0;
+    padding-left: 20px;
+    padding-bottom: 150px;
 }
 
-.lista li, .pontos li {
-    font-size: 0.95rem;
-    color: #444;
-    margin: 0.2rem 0;
+.lista li {
+    margin-bottom: 5px;
+    font: var(--TextosDados);
+    color: var(--CinzaTexto);
 }
 
 .lista li strong {
-    color: #000;
+    color: var(--PretoTexto);
 }
+{/* Fim da Classe dos Detalhes */}
 
-.pontos li::before {
-    content: "• ";
-    color: var(--RoxoMain);
-    font-weight: bold;
+{/* Inicio da Classe da Barra Abaixo de Detalhes */}
+.hr2 {
+    border-top: 1px solid #bdb9b97a;
+    margin: -130px 20px 0 10px;
+}
+{/* Fim da Classe da Barra Abaixo de Detalhes */}
+
+{/* Inicio da Classe do Subtitulo Acima dos Pontos */}
+.subtitulo2 {
+    font: var(--Subtitulos);
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+{/* Fim da Classe do Subtitulo Acima dos Pontos */}
+
+{/* Inicio da Classe dos Pontos Estratégicos */}
+.pontos li {
+    list-style: none;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    margin-bottom: -10px;
 }
 {/* Fim da Classe dos Pontos Estratégicos */}

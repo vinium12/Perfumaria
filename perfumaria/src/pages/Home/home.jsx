@@ -127,7 +127,6 @@ const Dashboard = () => {
 
       {/* Card com as Informações da Região */}
       <CardDados
-        titulo="Região"
         regiao={dadosCardDados.nomeRegiao || dadosPerfil.regiao}
         qtnVen={dadosCardDados.qtnVen || "N/A"}
         qtnCli={dadosCardDados.qtnCli || "N/A"}
