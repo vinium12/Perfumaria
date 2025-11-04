@@ -32,7 +32,8 @@
 .titulo {
     font: var(--Titulos);
     color: var(--PretoTexto);
-    margin-bottom: 0.8rem;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 {/* Fim da Classe do Titulo */}
 
@@ -40,26 +41,42 @@
 .data {
     font: var(--Textos);
     color: var(--CinzaTexto);
+    margin-right: 25px;
+    margin-top: 15px;
 }
 {/* Fim da Classe da Data */}
 
+{/* Inicio da Classe do Subtitulo */}
+.subtitulo {
+    font: var(--Subtitulos);
+    color: var(--PretoTexto);
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+{/* Fim da Classe do Subtitulo */}
+
+
 {/* Inicio da Classe da Barra */}
 .hr {
-  border-top: 1px solid #bdb9b97a;
+    border-top: 1px solid #bdb9b97a;
+    margin: 20px 20px 10px
 }
 {/* Fim da Classe da Barra */}
 
 {/* Inicio da Classe com a Lista de Informações do Carro */}
 .lista {
     list-style: none;
-    padding-left: 0;
-    margin: 0;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    font: var(--TextosDados);
+    color: var(--CinzaTexto);
 }
 
 .lista li {
-    font-size: 0.95rem;
-    color: #444;
-    margin: 0.25rem 0;
+    font: var(--TextosDados);
+    margin-bottom: 5px;
+
 }
 
 .lista li strong {

@@ -16,7 +16,7 @@ const CardPerfil = ({ email, ender, tel, regiao, onEdit }) => {
   return (
     <div className={styles.card}>
       <h3 className={styles.titulo}>Bem-vindo !</h3>
-
+      <hr className={styles.hr}/>
       <div className={styles.infoBase}>
         <p className={styles.subtitulo}>Informações Base:</p>
         <ul className={styles.lista}>
