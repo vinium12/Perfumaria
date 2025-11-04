@@ -22,7 +22,7 @@
   font: var(--TextosDados);
   box-sizing: border-box;
   outline: none;
-  background: #fff;
+  background: var(--BrancoMain);
   color: var(--PretoTexto);
   transition: border-color 0.2s;
   /* remove setas nativas */
@@ -41,7 +41,7 @@
   right: 12px;
   pointer-events: none;              /* clique passa no select */
   font-size: 18px;                   /* pode trocar por svg/ícone se quiser */
-  color: #9a9a9a;                    /* cinza clarinho */
+  color: var(--CinzaTexto);                    /* cinza clarinho */
   top: 50%;
   transform: translateY(-50%);
   line-height: 1;

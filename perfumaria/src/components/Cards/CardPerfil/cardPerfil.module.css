@@ -84,6 +84,6 @@
 }
 
 .botaoEditar:hover {
-    background-color: #5a4cc7;
+    background-color: var(--RoxoHover);
 }
 {/* Fim da Classe com o Botão de Editar */}

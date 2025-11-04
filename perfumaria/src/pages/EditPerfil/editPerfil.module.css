@@ -10,14 +10,7 @@
   margin: 0;
   padding: 0;
   /* Gradiente ajustado com transição mais suave */
-  background: linear-gradient(
-    180deg,
-    #483d8b 0%,
-    #5a47b0 40%,
-    #6a5acd 70%,
-    #8a2be2 100%
-  );
-
+  background: var(--BackGrad);
   /* Evita que algum container pai branco “vaze” */
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -26,7 +19,7 @@
 
 /* Card centralizado */
 .card {
-  background: #ffffff;
+  background: var(--BrancoMain);
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   padding: 32px 36px;
@@ -59,5 +52,3 @@
     padding: 24px 20px;
   }
 }
-
-

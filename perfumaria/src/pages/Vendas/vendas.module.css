@@ -28,8 +28,8 @@
 }
 
 .newButton {
-    background-color: #6A5ACD; 
-    color: white;
+    background-color: var(--RoxoMain); 
+    color: var(--BrancoMain);
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -41,7 +41,7 @@
 }
 
 .newButton:hover {
-    background-color: #5846b0;
+    background-color: var(--RoxoHover);
 }
 
 /* ------------------ 2. ÁREA DE ROLAGEM ------------------ */
@@ -66,6 +66,6 @@
     text-align: center;
     padding: 30px;
     width: 100%;
-    color: #495057;
+    color: var(--CinzaTexto);
     font-size: 1.1rem;
 }

@@ -1,17 +1,17 @@
 .wrapper {
-  background-color: #fff;
+  background-color: var(--BrancoMain);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font: var(--TextoDados);
 }
 
 .headerRow {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  background-color: #9b8cff;
-  color: #fff;
+  background-color: var(--RoxoSec);
+  color: var(--BrancoMain);
   font-weight: 600;
   padding: 10px 15px;
 }
@@ -34,7 +34,7 @@
 
 .cell {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--PretoIcons);
 }
 
 .actions {
@@ -56,11 +56,11 @@
 }
 
 .editBtn svg {
-  color: #6a5acd;
+  color: var(--RoxoMain);
 }
 
 .deleteBtn svg {
-  color: #d20000;
+  color: var(--VermelhoBtn);
 }
 
 .noData {
@@ -77,8 +77,8 @@
 }
 
 .bottomButton button {
-  background-color: #6a5acd;
-  color: white;
+  background-color: var(--RoxoMain);
+  color: var(--BrancoMain);
   border: none;
   border-radius: 5px;
   padding: 10px 25px;
@@ -88,5 +88,5 @@
 }
 
 .bottomButton button:hover {
-  background-color: #5846b0;
+  background-color: var(--RoxoHover);
 }
