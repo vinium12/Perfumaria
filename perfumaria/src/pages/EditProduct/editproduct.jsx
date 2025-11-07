@@ -59,11 +59,12 @@ const EditarProduto = () => {
 
     // Mapeia a chave 'quantidade' do formulário de volta para 'estoque' no corpo da API
     const dadosAPI = {
-      nome: dados.nome,
-      marca: dados.marca,
-      estoque: dados.quantidade, // ✅ Mapeando de volta: quantidade -> estoque
-      preco: dados.preco,
-    };
+    nome: dados.nome,
+    marca: dados.marca,
+    qtdEstoque: Number(dados.estoque) || 0,
+    preco: Number(dados.preco) || 0,
+};
+
 
     try {
       const res = await fetch(`http://localhost:3000/produtos/${produtoId}`, {
@@ -97,7 +98,7 @@ const EditarProduto = () => {
     return <div className={styles.error}>{error}</div>;
   }
 
-  return (
+  return (  
     <div className={styles.background}>
       <div className={styles.card}>
         <Formedit

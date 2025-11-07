@@ -13,13 +13,17 @@ const EditarVenda = () => {
   const [venda, setVenda] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // ----------------------------
+  // 🔹 Carrega dados iniciais
+  // ----------------------------
   useEffect(() => {
     const fetchData = async () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         const regiaoId = user?.regiaoId;
 
-        if (!regiaoId && regiaoId !== 0) throw new Error("Região não encontrada.");
+        if (!regiaoId && regiaoId !== 0)
+          throw new Error("Região não encontrada.");
 
         const [clientesRes, produtosRes, vendaRes] = await Promise.all([
           fetch(`http://localhost:3000/clientes?regiao=${regiaoId}`),
@@ -34,7 +38,6 @@ const EditarVenda = () => {
         const produtosData = await produtosRes.json();
         const vendaData = await vendaRes.json();
 
-        // 🔄 Adapta a estrutura da venda para o FormVenda
         const itensFormatados = (vendaData.Itens || []).map((item) => ({
           id: item.ID_Produto,
           produto: item.Produto_Nome,
@@ -63,6 +66,9 @@ const EditarVenda = () => {
     fetchData();
   }, [id]);
 
+  // ----------------------------
+  // 🔹 Salvar edição da venda
+  // ----------------------------
   const handleSalvar = async (dados) => {
     console.log("📝 Atualizando venda:", dados);
 
@@ -81,6 +87,30 @@ const EditarVenda = () => {
     };
 
     try {
+      // ✅ 1. Verifica estoque antes de enviar
+      for (const item of corpo.itens) {
+        const resEstoque = await fetch(
+          `http://localhost:3000/produtos/${item.id_produto}`
+        );
+        if (!resEstoque.ok) throw new Error("Falha ao verificar estoque.");
+
+        const produto = await resEstoque.json();
+        const estoqueAtual = produto?.Qtd_Estoque ?? 0;
+
+        if (estoqueAtual <= 0) {
+          alert(`❌ O produto "${produto.Nome}" está sem estoque.`);
+          return;
+        }
+
+        if (item.quantidade > estoqueAtual) {
+          alert(
+            `❌ Estoque insuficiente para o produto "${produto.Nome}". Disponível: ${estoqueAtual}`
+          );
+          return;
+        }
+      }
+
+      // ✅ 2. Envia atualização pro backend
       const res = await fetch(`http://localhost:3000/vendas/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -100,6 +130,9 @@ const EditarVenda = () => {
     }
   };
 
+  // ----------------------------
+  // 🔹 Renderização
+  // ----------------------------
   if (loading) {
     return (
       <div className={styles.background}>

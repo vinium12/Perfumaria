@@ -8,6 +8,8 @@ import clienteRoutes from "./routes/clienteRoutes.js";
 import produtoRoutes from "./routes/produtoRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import vendaRoutes from "./routes/vendaRoutes.js"
+// src/app.js (Verifique se esta linha existe)
+import veiculoRoutes from "./routes/veiculosRoutes.js";
 
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(express.json()); // Middleware para interpretar JSON
 // Rota de Vendedores
 app.use("/vendedores", vendedorRoutes);
 
+app.use("/veiculo", veiculoRoutes);
 // Rota de Autenticação (CRUCIAL para o seu login POST /auth/login)
 app.use("/auth", authRoutes);
 app.use("/clientes", clienteRoutes); // Isso define o prefixo /clientes

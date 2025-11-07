@@ -9,6 +9,26 @@ import {
 } from "../models/vendaModel.js";
 
 // ----------------------------------------------------------------------
+// [READ] GET /vendas/:id
+// ----------------------------------------------------------------------
+import { getVendaById } from "../models/vendaModel.js";
+
+export const getVenda = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const venda = await getVendaById(id);
+    if (!venda) {
+      return res.status(404).json({ message: "Venda não encontrada." });
+    }
+    res.json(venda);
+  } catch (err) {
+    console.error("Erro ao buscar venda:", err);
+    res.status(500).json({ message: "Erro ao buscar venda." });
+  }
+};
+
+
+// ----------------------------------------------------------------------
 // [READ] GET /vendas
 // ----------------------------------------------------------------------
 export const getNotas = async (req, res) => {

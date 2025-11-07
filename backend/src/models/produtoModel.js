@@ -13,6 +13,31 @@ export const createProduto = async (nome, preco, qtdEstoque, marca) => {
   return result[0].insertId; // Retorna o ID do produto inserido
 };
 
+export const getProdutoById = async (id) => {
+  try {
+    const [rows] = await pool.query(
+      `SELECT 
+        ID_Produto,
+        Nome,
+        Preco,
+        Qtd_Estoque,
+        Marca
+      FROM produto
+      WHERE ID_Produto = ?`,
+      [id]
+    );
+
+    // Se não encontrar produto, retorna null
+    if (rows.length === 0) return null;
+
+    return rows[0];
+  } catch (error) {
+    console.error("❌ Erro no Model ao buscar produto:", error);
+    throw new Error("Falha ao buscar produto no banco de dados.");
+  }
+};
+
+
 export const getAllProdutos = async () => {
   try {
     const [rows] = await pool.query(`

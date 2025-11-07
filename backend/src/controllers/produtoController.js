@@ -1,78 +1,82 @@
-// src/controllers/produtoController.js
+// backend/src/controllers/produtoController.js
+import * as ProdutoModel from "../models/produtoModel.js";
 
-import {
-  getAllProdutos,
-  createProduto,
-  updateProduto,
-  deleteProduto,
-  // Mantenha listarProdutos ou getAllProdutos se estiver em outro arquivo
-} from "../models/produtoModel.js";
-
-export const cadastrarProduto = async (req, res) => {
-  const { nome, preco, estoque, marca } = req.body;
-
-  // ⚠️ Validação básica
-  if (!nome || !preco || !estoque || !marca) {
-    return res
-      .status(400)
-      .json({ message: "Todos os campos são obrigatórios." });
-  }
-
+// [GET] Todos os produtos
+export const getAllProdutos = async (req, res) => {
   try {
-    const id = await createProduto(nome, preco, estoque, marca);
-    res.status(201).json({ message: "Produto cadastrado com sucesso.", id });
-  } catch (error) {
-    console.error("Erro ao cadastrar produto:", error);
-    res.status(500).json({ message: "Erro interno ao cadastrar produto." });
-  }
-};
-
-// [UPDATE] PUT /produtos/:id
-export const atualizarProduto = async (req, res) => {
-  const { id } = req.params;
-  const { nome, preco, estoque, marca } = req.body;
-
-  if (!nome || !preco || !estoque || !marca) {
-    return res
-      .status(400)
-      .json({ message: "Todos os campos são obrigatórios." });
-  }
-
-  try {
-    const affectedRows = await updateProduto(id, nome, preco, estoque, marca);
-    if (affectedRows === 0) {
-      return res.status(404).json({ message: "Produto não encontrado." });
-    }
-    res.json({ message: "Produto atualizado com sucesso." });
-  } catch (error) {
-    console.error("Erro ao atualizar produto:", error);
-    res.status(500).json({ message: "Erro interno ao atualizar produto." });
-  }
-};
-
-// [DELETE] DELETE /produtos/:id
-export const excluirProduto = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const affectedRows = await deleteProduto(id);
-    if (affectedRows === 0) {
-      return res.status(404).json({ message: "Produto não encontrado." });
-    }
-    res.json({ message: "Produto excluído com sucesso." });
-  } catch (error) {
-    console.error("Erro ao excluir produto:", error);
-    res.status(500).json({ message: "Erro interno ao excluir produto." });
-  }
-};
-
-export const listarProdutos = async (req, res) => {
-  // A função é simples, pois o Model já está tratando tudo
-  try {
-    const produtos = await getAllProdutos();
+    const produtos = await ProdutoModel.getAllProdutos(); // ✅ CORRETO
     res.json(produtos);
   } catch (error) {
     console.error("Erro no Controller ao listar produtos:", error);
-    res.status(500).json({ message: "Erro interno do servidor." });
+    res.status(500).json({ message: "Erro interno do servidor ao buscar produtos." });
+  }
+};
+
+// [GET] Produto por ID
+export const getProdutoById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const produto = await ProdutoModel.getProdutoById(id); // ✅ CORRETO
+
+    if (!produto) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    res.json(produto);
+  } catch (error) {
+    console.error("Erro ao buscar produto por ID:", error);
+    res.status(500).json({ message: "Erro interno ao buscar produto." });
+  }
+};
+
+// [POST] Criar Produto
+export const createProduto = async (req, res) => {
+  try {
+    const { nome, preco, qtdEstoque, marca } = req.body;
+    const id = await ProdutoModel.createProduto(nome, preco, qtdEstoque, marca); // ✅ CORRETO
+    res.status(201).json({ message: "Produto criado com sucesso!", id });
+  } catch (error) {
+    console.error("Erro ao criar produto:", error);
+    res.status(500).json({ message: "Erro ao criar produto." });
+  }
+};
+
+// [PUT] Atualizar Produto
+export const updateProduto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { nome, preco, qtdEstoque, marca } = req.body;
+
+    preco = Number(preco) || 0;
+    qtdEstoque = Number(qtdEstoque) || 0;
+
+    const linhasAfetadas = await ProdutoModel.updateProduto(id, nome, preco, qtdEstoque, marca);
+
+    if (!linhasAfetadas) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    res.json({ message: "Produto atualizado com sucesso." });
+  } catch (error) {
+    console.error("Erro ao atualizar produto:", error);
+    res.status(500).json({ message: "Erro ao atualizar produto." });
+  }
+};
+
+
+// [DELETE] Excluir Produto
+export const deleteProduto = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const linhasAfetadas = await ProdutoModel.deleteProduto(id); // ✅ CORRETO
+
+    if (!linhasAfetadas) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    res.json({ message: "Produto excluído com sucesso." });
+  } catch (error) {
+    console.error("Erro ao excluir produto:", error);
+    res.status(500).json({ message: "Erro ao excluir produto." });
   }
 };

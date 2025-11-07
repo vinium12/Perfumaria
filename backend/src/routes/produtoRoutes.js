@@ -1,24 +1,27 @@
-// src/routes/produtoRoutes.js
 import express from "express";
 import {
-  listarProdutos,
-  cadastrarProduto,
-  atualizarProduto,
-  excluirProduto,
+  getAllProdutos,   // ✅ listar todos
+  getProdutoById,   // ✅ buscar por ID
+  createProduto,    // ✅ cadastrar
+  updateProduto,    // ✅ atualizar
+  deleteProduto     // ✅ excluir
 } from "../controllers/produtoController.js";
 
 const router = express.Router();
 
-// [READ] GET /produtos
-router.get("/", listarProdutos);
+// [GET] Todos os produtos
+router.get("/", getAllProdutos);
 
-// [CREATE] POST /produtos
-router.post("/", cadastrarProduto);
+// [GET] Produto por ID
+router.get("/:id", getProdutoById);
 
-// [UPDATE] PUT /produtos/:id
-router.put("/:id", atualizarProduto);
+// [POST] Criar novo produto
+router.post("/", createProduto);
 
-// [DELETE] DELETE /produtos/:id
-router.delete("/:id", excluirProduto);
+// [PUT] Atualizar produto existente
+router.put("/:id", updateProduto);
+
+// [DELETE] Excluir produto
+router.delete("/:id", deleteProduto);
 
 export default router;
