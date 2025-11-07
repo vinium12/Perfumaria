@@ -15,6 +15,22 @@
 }
 {/* Fim da Classe Principal do Header */}
 
+{/* Inicio da Classe com o Nome da TScent */}
+.logoTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+{/* Fim da Classe com o Nome da TScent */}
+
+{/* Inicio da Classe com a Logo do Site */}
+.logoImage {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+{/* Fim da Classe com a Logo do Site */}
+
 {/* Inicio da Classe com o Título do Projeto */}
 .headerTitle {
   font: var(--Titulos);
@@ -66,7 +82,6 @@
 .active::after {
   transform: scaleX(1); 
 }
-
 {/* Fim da Classe com os Links da Navbar */}
 
 {/* Inicio da Classe do Botão Sair */}

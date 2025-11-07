@@ -10,6 +10,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 {
+  /* Import da Logo Utilizada na Navbar */
+}
+import logo from '../../assets/T-Scent Logo Nav.svg';
+
+{
   /* Import do CSS do Componente */
 }
 import styles from "./header.module.css";
@@ -31,9 +36,12 @@ const Header = ({ isLoggedIn, activeScreen, onLogout }) => {
 
   return (
     <header className={styles.headerContainer}>
-      {" "}
       {/* Começo do Header */}
-      <h1 className={styles.headerTitle}>T-Scent</h1> {/* Título da Navbar */}
+      <div className={styles.logoTitle}>
+        <img  src={logo} alt="T-Scent Logo" className={styles.logoImage}/>
+        <h1 className={styles.headerTitle}>T-Scent</h1>
+      </div>
+    
       {isLoggedIn ? (
         <>
           <nav className={styles.headerNav}>
