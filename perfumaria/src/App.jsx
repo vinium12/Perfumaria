@@ -7,6 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 import Header from "./components/Header/header";
 import Login from "./pages/Login/login";
@@ -27,7 +28,6 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Redireciona para home se já estiver logado e tentar acessar login
   useEffect(() => {
     if (isLoggedIn && location.pathname === "/login") {
       navigate("/");
@@ -44,7 +44,7 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
     location.pathname === "/editarproduto" ||
     location.pathname === "/cadastrarproduto" ||
     location.pathname === "/cadastrarvenda" ||
-    location.pathname.startsWith("/editarvenda") // 👈 aqui!
+    location.pathname.startsWith("/editarvenda")
       ? "0"
       : "20px 100px";
 
@@ -57,102 +57,113 @@ function AppRouter({ isLoggedIn, onLogin, onLogout }) {
       />
 
       <main style={{ padding: mainPadding }}>
-        <Routes>
-          <Route path="/login" element={<Login onLogin={onLogin} />} />
+        {/* AnimatePresence detecta entrada e saída de rotas */}
+        <AnimatePresence mode="wait">
+          {/* motion.div aplica animação a cada troca de página */}
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <Routes location={location} key={location.pathname}>
+              <Route path="/login" element={<Login onLogin={onLogin} />} />
 
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/clientes"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Clientes />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/clientes"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Clientes />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/frota"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Cars />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/frota"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Cars />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/produtos"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Produtos />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/produtos"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Produtos />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/vendas"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Vendas/>
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/vendas"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Vendas />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/editar"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <EditarPerfil />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/editar"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <EditarPerfil />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/editarproduto"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <EditarProduto />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/editarproduto"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <EditarProduto />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/editarvenda/:id"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <EditarVenda />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/editarvenda/:id"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <EditarVenda />
+                  </ProtectedRoute>
+                }
+              />
 
+              <Route
+                path="/cadastrarproduto"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <CadastrarProduto />
+                  </ProtectedRoute>
+                }
+              />
 
-          <Route
-            path="/cadastrarproduto"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <CadastrarProduto />
-              </ProtectedRoute>
-            }
-          />
+              <Route
+                path="/cadastrarvenda"
+                element={
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <CadastrarVenda />
+                  </ProtectedRoute>
+                }
+              />
 
-           <Route
-            path="/cadastrarvenda"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <CadastrarVenda />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
       </main>
     </>
   );
