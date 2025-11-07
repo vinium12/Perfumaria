@@ -15,3 +15,8 @@
 .tableWrapper{
     width: 100%;
 }
+
+.newButton {
+    color: red;
+    background-color: red;
+}

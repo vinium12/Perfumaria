@@ -68,3 +68,11 @@ a {
   background-color: var(--BrancoMain);
 }
 {/* Fim da Barra de Scroll do Site Personalizada*/}
+
+{/* Inicio da Padronização dos Textos do Site */}
+h1 {
+  font: var(--Titulos);
+}
+
+
+{/* Fim da Padronização dos Textos do Site */}

@@ -68,6 +68,10 @@ const Produtos = () => {
     <button
       onClick={handleAddProduct} // ✅ Anexa a função de navegação
       className={styles.newButton} // Use a classe que você definir para o botão
+      style={{
+        font: "var(--Titulos)",
+        fontSize: "1rem"
+      }}
     >
       Adicionar Novo Produto
     </button>

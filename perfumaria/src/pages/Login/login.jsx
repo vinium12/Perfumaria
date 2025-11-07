@@ -76,7 +76,8 @@ const Login = ({ onLogin }) => {
             style={{
               padding: "10px 20px",
               backgroundColor: "var(--RoxoMain)",
-              font: "var(--Textos)",
+              font: "var(--Titulos)",
+              fontSize: "2rem",
               color: "var(--BrancoMain)",
               border: "none",
               cursor: "pointer",

@@ -74,11 +74,12 @@
 .botaoEditar {
     background-color: var(--RoxoMain);
     color: var(--BrancoMain);
+    font: var(--Titulos);
+    font-size: 1rem;
     border: none;
     width: 120px;
     border-radius: 4px;
     padding: 0.6rem 1.2rem;
-    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
