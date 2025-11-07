@@ -1,4 +1,6 @@
-/* === SELECT (mesmo visual do input) === */
+{/* CSS do Componente Select */}
+
+{/* Inicio da Classe dos Textos Acima do Select */}
 .label {
     font: var(--Subtitulos);
     display: block;
@@ -6,17 +8,21 @@
     color: var(--PretoTexto);
     font-size: 18px;
 }
+{/* Fim da Classe dos Textos Acima do Select */}
 
+{/* Inicio da Classe da Borda do Select */}
 .selectWrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
+{/* Fim da Classe da Borda do Select */}
 
+{/* Inicio da Classe que Estiliza o Campo do Select */}
 .selectField {
   width: 100%;
   height: 40px;
-  padding: 0 36px 0 10px;            /* espaço p/ a seta à direita */
+  padding: 0 36px 0 10px;            
   border: 2px solid var(--RoxoMain);
   border-radius: 5px;
   font: var(--TextosDados);
@@ -25,7 +31,6 @@
   background: var(--BrancoMain);
   color: var(--PretoTexto);
   transition: border-color 0.2s;
-  /* remove setas nativas */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -34,20 +39,17 @@
 .selectField:focus {
   border-color: var(--RoxoMain);
 }
+{/* Fim da Classe que Estiliza o Campo do Select */}
 
-/* seta do select (igual ao print) */
+{/* Inicio da Classe que Estiliza a Seta no Campo */}
 .selectArrow {
   position: absolute;
   right: 12px;
-  pointer-events: none;              /* clique passa no select */
-  font-size: 18px;                   /* pode trocar por svg/ícone se quiser */
-  color: var(--CinzaTexto);                    /* cinza clarinho */
+  pointer-events: none;      
+  font-size: 18px;                   
+  color: var(--CinzaTexto);                   
   top: 50%;
   transform: translateY(-50%);
   line-height: 1;
 }
-
-/* opcional: cursor e hover */
-.selectField:hover {
-  cursor: pointer;
-}
+{/* Fim da Classe que Estiliza a Seta no Campo */}

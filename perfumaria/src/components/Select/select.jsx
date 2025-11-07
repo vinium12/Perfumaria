@@ -1,16 +1,24 @@
-import React from "react";
-import styles from "./select.module.css"; // reaproveita o mesmo CSS
+{
+  /* Classe de Criação do Componente Select Utilizado nos Formulários do Site */
+}
 
+import React from "react";
+
+{
+  /* Import do CSS do Componente */
+}
+import styles from "./select.module.css";
+
+{/* Função de Criação do Componente */}
 const Select = ({
   label,
   name,
   value,
   onChange,
   placeholder = "Selecione...",
-  options = [], // pode ser [{label, value}] ou ["Opção 1", "Opção 2"]
+  options = [],
   ...rest
 }) => {
-  // normaliza opções se vierem como string[]
   const normalized = options.map((opt) =>
     typeof opt === "string" ? { label: opt, value: opt } : opt
   );
@@ -32,7 +40,6 @@ const Select = ({
           className={styles.selectField}
           {...rest}
         >
-          {/* placeholder “fantasma” */}
           <option value="" disabled hidden>
             {placeholder}
           </option>
@@ -44,7 +51,6 @@ const Select = ({
           ))}
         </select>
 
-        {/* seta (chevron) */}
         <span className={styles.selectArrow} aria-hidden="true">
           ▾
         </span>

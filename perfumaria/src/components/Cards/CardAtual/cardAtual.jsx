@@ -7,7 +7,7 @@ import React from "react";
 {
   /* Import do CSS do Componente */
 }
-import styles from './cardAtual.module.css'
+import styles from "./cardAtual.module.css";
 
 {
   /* Função de Criação do Card */

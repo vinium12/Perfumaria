@@ -1,7 +1,22 @@
+{
+  /* Classe de Criação do Componente do Formulário das Telas de Venda*/
+}
+
 import React, { useState, useEffect } from "react";
+
+{
+  /* Import do Componente de Tabelas do Site */
+}
 import Table from "../../components/Table/table";
+
+{
+  /* Import do CSS do Componente */
+}
 import styles from "./formVenda.module.css";
 
+{
+  /* Função de Criação do Componente */
+}
 const FormVenda = ({
   modo = "cadastrar",
   clientes = [],
@@ -14,7 +29,9 @@ const FormVenda = ({
   const [quantidade, setQuantidade] = useState(1);
   const [itens, setItens] = useState(vendaSelecionada?.itens || []);
 
-  // Atualiza caso mude a venda selecionada (modo edição)
+  {
+    /* Método de Alteração dos Valores */
+  }
   useEffect(() => {
     if (vendaSelecionada) {
       setClienteId(vendaSelecionada.clienteId);
@@ -22,7 +39,9 @@ const FormVenda = ({
     }
   }, [vendaSelecionada]);
 
-  // Padroniza listas vindas do backend
+  {
+    /* Padronização dos Elementos das Listas no Banco */
+  }
   const clientesList = (Array.isArray(clientes) ? clientes : []).map((c) => ({
     id: c.id || c.ID_Cliente,
     nome: c.nome || c.Nome || c.Nome_Cliente,
@@ -34,7 +53,9 @@ const FormVenda = ({
     preco: Number(p.preco || p.Preco || 0),
   }));
 
-  // ➕ Adiciona produto à tabela
+  {
+    /* Método de Adição de Itens à Tabela */
+  }
   const handleAdicionarProduto = () => {
     if (!produtoSelecionadoId || quantidade <= 0) return;
 
@@ -44,7 +65,7 @@ const FormVenda = ({
     if (!produtoObj) return;
 
     const novoItem = {
-      id: produtoObj.id, // ✅ ID real
+      id: produtoObj.id,
       produto: produtoObj.nome,
       qtd: Number(quantidade),
       precounitario: produtoObj.preco.toLocaleString("pt-BR", {
@@ -58,22 +79,29 @@ const FormVenda = ({
     setQuantidade(1);
   };
 
-  // 🗑️ Remover produto
+  {
+    /* Método de Exclusão de Itens da Tabela */
+  }
   const handleRemoverProduto = (item) => {
     setItens((prev) => prev.filter((i) => i !== item));
   };
 
-  // 💰 Calcular total
+  {
+    /* Método que Calcula o Valor Total dos Produtos da Venda */
+  }
   const total = itens
     .reduce((acc, item) => {
       const precoStr = item.precounitario || "R$ 0,00";
-      const preco = parseFloat(precoStr.replace("R$", "").replace(",", ".")) || 0;
+      const preco =
+        parseFloat(precoStr.replace("R$", "").replace(",", ".")) || 0;
       return acc + preco * (item.qtd || 0);
     }, 0)
     .toFixed(2)
     .replace(".", ",");
 
-  // 💾 Envio final
+  {
+    /* Método Para Atribuir a Venda à Algum Cliente */
+  }
   const handleSubmit = () => {
     if (!clienteId || itens.length === 0) {
       alert("Selecione um cliente e adicione ao menos um produto!");
@@ -83,7 +111,7 @@ const FormVenda = ({
     const novaVenda = {
       clienteId,
       itens: itens.map((item) => ({
-        id: item.id, // ✅ já vem do produto selecionado
+        id: item.id,
         qtd: item.qtd,
         precounitario: item.precounitario,
       })),
@@ -98,7 +126,7 @@ const FormVenda = ({
       <div className={styles.card}>
         <h1>{modo === "editar" ? "Editar Venda" : "Registrar Venda"}</h1>
 
-        {/* CLIENTE */}
+        {/* Inicio dos Elementos do Input de Escolha de Cliente */}
         <label className={styles.label}>Cliente</label>
         <div className={styles.selectWrapper}>
           <select
@@ -115,8 +143,9 @@ const FormVenda = ({
           </select>
           <span className={styles.selectArrow}>▼</span>
         </div>
+        {/* Fim dos Elementos do Input de Escolha de Cliente */}
 
-        {/* PRODUTO */}
+        {/* Inicio dos Elementos do Input de Escolha de Produtos */}
         <label className={styles.label}>Produto</label>
         <div className={styles.itensRow}>
           <div className={styles.selectWrapper}>
@@ -142,6 +171,7 @@ const FormVenda = ({
             value={quantidade}
             onChange={(e) => setQuantidade(e.target.value)}
           />
+          {/* Fim dos Elementos do Input de Escolha de Produtos */}
 
           <button
             type="button"
@@ -152,7 +182,7 @@ const FormVenda = ({
           </button>
         </div>
 
-        {/* TABELA DE ITENS */}
+        {/* Elementos da Tabela da Compra Sendo Feita */}
         <Table
           columns={["Produto", "Qtd", "Preco Unitario"]}
           data={itens}
@@ -160,12 +190,10 @@ const FormVenda = ({
           onDelete={handleRemoverProduto}
         />
 
-        {/* TOTAL */}
         <div className={styles.totalContainer}>
           <span>Total:</span> <strong>R$ {total}</strong>
         </div>
 
-        {/* BOTÃO */}
         <button className={styles.button} onClick={handleSubmit}>
           {modo === "editar" ? "Salvar Alterações" : "Registrar Venda"}
         </button>

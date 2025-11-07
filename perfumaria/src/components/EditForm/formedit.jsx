@@ -1,17 +1,22 @@
+{
+  /* Classe de Criação do Componente Padrão Para as Telas de Edição */
+}
+
 import React, { useState, useMemo } from "react";
+
+{
+  /* Import do Componente Input */
+}
 import Input from "../Input/input";
+
+{
+  /* Import do CSS do Componente */
+}
 import styles from "./formedit.module.css";
 
-/**
- * Props:
- * - titulo: string (ex.: "Editar Produto" | "Cadastrar Produto")
- * - modo: "editar" | "cadastrar" | "auto" (default "auto")
- * - campos: [{ name, label, type?, placeholder? }]
- * - valoresIniciais: {} (para edição)
- * - onCreate?: (dados) => void
- * - onUpdate?: (dados) => void
- * - onSubmit?: (dados) => void   // fallback/retrocompatibilidade
- */
+{
+  /* Função de Criação do Formulário de Edição */
+}
 const Formedit = ({
   titulo,
   modo = "auto",
@@ -23,18 +28,18 @@ const Formedit = ({
 }) => {
   const [formData, setFormData] = useState(valoresIniciais);
 
-  // Resolve modo: prioridade para prop 'modo'; se "auto", infere do título.
+  {/* Função Para Reutilização do Forms Tanto Para Edição Quanto Cadastro */}
   const resolvedMode = useMemo(() => {
     if (modo !== "auto") return modo;
     if (/^\s*editar/i.test(titulo)) return "editar";
     if (/^\s*cadastrar/i.test(titulo)) return "cadastrar";
-    // fallback seguro
     return Object.keys(valoresIniciais || {}).length ? "editar" : "cadastrar";
   }, [modo, titulo, valoresIniciais]);
 
   const buttonLabel =
     resolvedMode === "editar" ? "Salvar alterações" : "Cadastrar";
 
+    {/* Função de Ativação do Botão */}
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -43,6 +48,7 @@ const Formedit = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+   {/* Condicionais Para Ativar Funcionalidades Distintas do Botão */}
     if (resolvedMode === "editar" && typeof onUpdate === "function") {
       onUpdate(formData);
       return;
@@ -51,12 +57,12 @@ const Formedit = ({
       onCreate(formData);
       return;
     }
-    // retrocompatível: mantém comportamento antigo
     if (typeof onSubmit === "function") {
       onSubmit(formData);
     }
   };
 
+  {/* Criação dos Elementos Visuais do Componente */}
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
